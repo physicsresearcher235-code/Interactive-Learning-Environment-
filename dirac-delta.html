@@ -360,7 +360,6 @@ canvas {
         <header class="site-header">
             <div class="brand-copy">
                 <h1>أدوات رياضية في الفيزياء</h1>
-                <p>دلتا لديراك وجهد دلتا في ميكانيكا الكم</p>
             </div>
             <nav class="top-nav" aria-label="روابط الصفحات">
                 <a href="./index.html">الرئيسية</a>
@@ -368,24 +367,18 @@ canvas {
                 <a href="./electricity.html">الكهربائية</a>
                 <a href="./quantum.html">ميكانيكا الكم</a>
                 <a href="./triangular.html">بئر جهد مثلثي</a>
-                <a href="./dirac-delta.html" aria-current="page">دلتا لديراك</a>
+                <a href="./dirac-delta.html" aria-current="page">أدوات رياضية في الفيزياء</a>
             </nav>
         </header>
 
         <section class="hero">
             <article class="hero-panel">
-                <span class="eyebrow">دلتا لديراك</span>
-                <h2>جهد دلتا في ميكانيكا الكم</h2>
-                <p>عرض بصري مختصر يوضح شكل دلتا وأثر جهد دلتا على الدالة الموجية.</p>
+                <span class="eyebrow">أدوات رياضية في الفيزياء</span>
+                <h2>دلتا لديراك</h2>
             </article>
 
             <aside class="side-panel">
-                <h3>السلوك العام</h3>
-                <ul>
-                    <li>عند تصغير ε تضيق النبضة وترتفع القمة.</li>
-                    <li>عند زيادة g يزداد تمركز الدالة حول الصفر.</li>
-                    <li>تظهر قفزة في مشتقة ψ عند الصفر.</li>
-                </ul>
+                <h3>جهد دلتا في ميكانيكا الكم</h3>
                 <a class="primary-button" href="#quantum-delta">المحاكاة</a>
             </aside>
         </section>
@@ -393,13 +386,11 @@ canvas {
         <section>
             <div class="section-heading">
                 <h3>دلتا لديراك</h3>
-                <p>تمثيل بصري مبسط.</p>
             </div>
 
             <div class="content-grid">
                 <article class="card">
                     <h3>تمثيل دلتا</h3>
-                    <p>كلما صغرت ε أصبح العرض أصغر والقمة أعلى.</p>
 
                     <div class="control-grid">
                         <div class="control-group">
@@ -427,36 +418,20 @@ canvas {
                             <span>أعلى + أضيق</span>
                         </div>
                     </div>
-
-                    <div class="formula-box">
-                        <code>δ_ε(x) = exp(-(x/ε)^2) / (√π ε)</code>
-                    </div>
                 </article>
 
                 <article class="card">
-                    <h3>فكرة سريعة</h3>
-                    <p>دلتا تمثل تأثيرًا متمركزًا جدًا عند نقطة واحدة.</p>
-
-                    <div class="formula-box">
-                        <code>δ(x) = 0   when x ≠ 0
-
-∫ δ(x) dx = 1
-
-∫ f(x) δ(x-a) dx = f(a)</code>
-                    </div>
+                    <h3>أمثلة</h3>
 
                     <div class="example-grid">
                         <div class="example-card">
                             <strong>شحنة نقطية</strong>
-                            <p>مصدر مركز في نقطة واحدة.</p>
                         </div>
                         <div class="example-card">
                             <strong>نبضة قوة</strong>
-                            <p>تأثير شديد خلال زمن قصير جدًا.</p>
                         </div>
                         <div class="example-card">
                             <strong>جهد دلتا</strong>
-                            <p>بئر أو حاجز شديد التمركز.</p>
                         </div>
                     </div>
                 </article>
@@ -466,13 +441,11 @@ canvas {
         <section id="quantum-delta">
             <div class="section-heading">
                 <h3>جهد دلتا في ميكانيكا الكم</h3>
-                <p>تتغير شكل ψ وتمركزها مع شدة البئر.</p>
             </div>
 
             <div class="content-grid">
                 <article class="card">
                     <h3>أثر شدة البئر</h3>
-                    <p>زد g ولاحظ كيف يزداد التمركز حول الصفر.</p>
 
                     <div class="control-grid">
                         <div class="control-group">
@@ -500,41 +473,22 @@ canvas {
                             <span id="jumpValue">-2.200 ψ(0)</span>
                         </div>
                     </div>
-
-                    <div class="formula-box">
-                        <code>κ = g / 2
-E = -g² / 4
-ψ(x) = √κ exp(-κ |x|)</code>
-                    </div>
                 </article>
 
                 <article class="card">
                     <h3>السلوك</h3>
-                    <p>البرتقالي يمثل الجهد، الأزرق هو ψ، والأخضر هو |ψ(x)|².</p>
-
-                    <div class="formula-box">
-                        <code>ψ is continuous at x = 0
-
-ψ'(0+) - ψ'(0-) = -g ψ(0)</code>
-                    </div>
-
-                    <p>كلما زادت شدة البئر أصبحت الحالة أكثر تمركزًا حول الصفر.</p>
 
                     <div class="example-grid">
                         <div class="example-card">
                             <strong>قيمة أصغر لـ g</strong>
-                            <p>تمركز أقل وانتشار أكبر.</p>
                         </div>
                         <div class="example-card">
                             <strong>قيمة أكبر لـ g</strong>
-                            <p>تمركز أكبر حول الصفر.</p>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
-
-        <p class="footer-note">عرض مبسط.</p>
     </main>
 
     <script>
