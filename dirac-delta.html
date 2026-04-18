@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أدوات رياضية للفيزياء | دالة دلتا لديراك</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-deep: #071824;
+    --bg-mid: #12304a;
+    --card: rgba(255, 255, 255, 0.94);
+    --ink: #10263b;
+    --muted: #5a7086;
+    --accent: #f0b35a;
+    --accent-strong: #d78921;
+    --shadow: 0 24px 60px rgba(3, 17, 31, 0.24);
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --line: rgba(16, 38, 59, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+    color: #ecf2f8;
+    background:
+        radial-gradient(circle at top right, rgba(240, 179, 90, 0.22), transparent 25%),
+        radial-gradient(circle at top left, rgba(92, 173, 255, 0.16), transparent 22%),
+        linear-gradient(145deg, var(--bg-deep) 0%, var(--bg-mid) 50%, #264563 100%);
+}
+
+a { color: inherit; text-decoration: none; }
+.page-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 48px; }
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    background: rgba(7, 24, 36, 0.42);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+.brand-copy h1, .brand-copy p, .card h2, .card h3, .card p { margin: 0; }
+.brand-copy h1 { font-size: clamp(1.6rem, 2.6vw, 2.5rem); font-weight: 800; }
+.brand-copy p { margin-top: 8px; color: rgba(236, 242, 248, 0.82); line-height: 1.8; max-width: 60ch; }
+
+.top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-nav a, .primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.top-nav a {
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.top-nav a:hover, .primary-button:hover { transform: translateY(-2px); }
+.top-nav a[aria-current="page"] {
+    color: #11263b;
+    background: var(--accent);
+    border-color: transparent;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.85fr);
+    gap: 24px;
+    margin-top: 28px;
+}
+
+.card, .hero-panel, .info-chip, .formula-box {
+    background: var(--card);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.hero-panel {
+    padding: 34px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: auto -80px -80px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 179, 90, 0.35), transparent 70%);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--accent-strong);
+    background: rgba(240, 179, 90, 0.16);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.hero-panel h2 {
+    margin-top: 16px;
+    font-size: clamp(2rem, 4vw, 3.3rem);
+    line-height: 1.15;
+}
+
+.hero-panel p {
+    margin-top: 14px;
+    max-width: 58ch;
+    line-height: 1.95;
+    color: var(--muted);
+}
+
+.hero-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.info-chip {
+    padding: 16px;
+    background: rgba(16, 38, 59, 0.05);
+    border-radius: var(--radius-md);
+    box-shadow: none;
+}
+
+.info-chip strong { display: block; font-size: 1.08rem; }
+.info-chip span { color: var(--muted); font-size: 0.92rem; }
+
+.side-panel {
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+        rgba(7, 24, 36, 0.3);
+}
+
+.side-panel h3 { margin: 0 0 10px; font-size: 1.35rem; }
+.side-panel p, .side-panel li { color: rgba(236, 242, 248, 0.82); line-height: 1.9; }
+.side-panel ul { margin: 0; padding-inline-start: 20px; }
+
+.section-heading { margin: 34px 0 16px; }
+.section-heading h3 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.9rem); }
+.section-heading p { margin: 6px 0 0; color: rgba(236, 242, 248, 0.78); }
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card { padding: 28px; }
+.card h3 { font-size: 1.35rem; margin-bottom: 10px; }
+.card p { line-height: 1.9; color: var(--muted); }
+
+.control-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin: 18px 0;
+}
+
+.control-group {
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.03);
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-strong);
+}
+
+.value-display {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.08);
+    font-weight: 700;
+    font-family: "Cascadia Mono", "Consolas", monospace;
+}
+
+.plot-wrap {
+    margin-top: 16px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(16, 38, 59, 0.1);
+    background: #f6fbff;
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+    margin-top: 16px;
+}
+
+.stat-box {
+    padding: 14px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+}
+
+.stat-box strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.stat-box span {
+    color: var(--muted);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+}
+
+.formula-box {
+    margin-top: 18px;
+    padding: 18px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    box-shadow: none;
+}
+
+.formula-box code {
+    direction: ltr;
+    display: block;
+    white-space: pre-wrap;
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    font-size: 0.96rem;
+    line-height: 1.9;
+}
+
+.example-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+    margin-top: 18px;
+}
+
+.example-card {
+    padding: 22px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+}
+
+.example-card strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+}
+
+.example-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.primary-button {
+    color: #11263b;
+    background: var(--accent);
+    width: fit-content;
+    margin-top: 18px;
+}
+
+.footer-note {
+    margin-top: 22px;
+    text-align: center;
+    color: rgba(236, 242, 248, 0.64);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+    .hero, .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .page-shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+    }
+
+    .site-header,
+    .hero-panel,
+    .card,
+    .side-panel {
+        border-radius: 22px;
+    }
+
+    .site-header,
+    .hero-panel,
+    .card {
+        padding: 22px;
+    }
+
+    .top-nav {
+        width: 100%;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .top-nav a {
+        flex: 1 1 132px;
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 0.96rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="site-header">
+            <div class="brand-copy">
+                <h1>أدوات رياضية للفيزياء</h1>
+                <p>صفحة مستقلة تمهيدية عن دالة دلتا لديراك، مع تصور بصري بسيط ثم تطبيق مباشر على بئر دلتا الجاذب في ميكانيكا الكم.</p>
+            </div>
+            <nav class="top-nav" aria-label="روابط الصفحات">
+                <a href="./index.html">الرئيسية</a>
+                <a href="./classical.html">الميكانيكا الكلاسيكية</a>
+                <a href="./electricity.html">الكهربائية</a>
+                <a href="./quantum.html">ميكانيكا الكم</a>
+                <a href="./triangular.html">بئر جهد مثلثي</a>
+                <a href="./dirac-delta.html" aria-current="page">دلتا لديراك</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <article class="hero-panel">
+                <span class="eyebrow">بداية مناسبة للقسم الجديد</span>
+                <h2>دالة دلتا لديراك ثم جهد دلتا في ميكانيكا الكم</h2>
+                <p>
+                    الفكرة هنا أن نعرض دلتا أولًا كحد لنبضات تضيق أكثر فأكثر مع بقاء المساحة مساوية لـ 1،
+                    ثم ننتقل مباشرة إلى تطبيق فيزيائي مهم: بئر دلتا الجاذب
+                    <span dir="ltr">V(x) = -g&nbsp;δ(x)</span>
+                    وكيف يغيّر شكل الدالة الموجية والحالة المقيدة.
+                </p>
+                <div class="hero-meta">
+                    <div class="info-chip">
+                        <strong>مدخل رياضي</strong>
+                        <span>تمهيد بصري قصير وواضح</span>
+                    </div>
+                    <div class="info-chip">
+                        <strong>تطبيق كمومي</strong>
+                        <span>حالة مقيدة واحدة في وحدات مبسطة</span>
+                    </div>
+                    <div class="info-chip">
+                        <strong>ملف واحد فقط</strong>
+                        <span>صفحة مستقلة لا تغيّر أي صفحة أخرى</span>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="side-panel">
+                <h3>لماذا هذا الاختيار جيد؟</h3>
+                <ul>
+                    <li>يبقي القسم قريبًا من روح الموقع الحالي بدل أن يكون رياضيات مجردة فقط.</li>
+                    <li>يعطي معنى واضحًا لدالة دلتا من خلال مثال فيزيائي فعلي.</li>
+                    <li>يسهّل عليك التوسع لاحقًا إلى توابع أخرى مثل دالة الخطوة أو تحويل فورييه.</li>
+                </ul>
+                <a class="primary-button" href="#quantum-delta">الانتقال إلى المحاكاة</a>
+            </aside>
+        </section>
+
+        <section>
+            <div class="section-heading">
+                <h3>1. التصور البصري لدالة دلتا</h3>
+                <p>نعرض تقريبًا غاوسيًا لـ دلتا حيث تصغر القيمة ε، فتضيق النبضة ويرتفع القمة، بينما تبقى المساحة مساوية تقريبًا لـ 1.</p>
+            </div>
+
+            <div class="content-grid">
+                <article class="card">
+                    <h3>تقريب غاوسي</h3>
+                    <p>نستخدم الصيغة التقريبية التالية في الصفحة، وهي ليست دلتا نفسها، لكنها تقترب منها حين تكون ε صغيرة.</p>
+
+                    <div class="control-grid">
+                        <div class="control-group">
+                            <label for="epsilonRange">عرض النبضة ε</label>
+                            <input id="epsilonRange" type="range" min="0.12" max="1.60" step="0.01" value="0.48">
+                            <div class="value-display" id="epsilonValue">0.48</div>
+                        </div>
+                    </div>
+
+                    <div class="plot-wrap">
+                        <canvas id="deltaCanvas" width="900" height="360"></canvas>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <strong>القيمة العظمى</strong>
+                            <span id="peakValue">0.000</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>المساحة التقريبية</strong>
+                            <span id="areaValue">1.000</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>المغزى</strong>
+                            <span>قمة أعلى وعرض أضيق</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <code>δ_ε(x) = exp(-(x/ε)^2) / (√π ε)</code>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>الفكرة الرياضية المختصرة</h3>
+                    <p>
+                        دلتا لديراك ليست دالة عادية بالمعنى المألوف، بل توزع يُستخدم لتمثيل مصدر موضعي جدًا.
+                        أهم ما نريد ترسيخه هنا هو أن قيمتها خارج الصفر لا تمثل كل القصة؛ العنصر الجوهري هو سلوكها داخل التكامل.
+                    </p>
+
+                    <div class="formula-box">
+                        <code>δ(x) = 0   عندما x ≠ 0
+
+∫ δ(x) dx = 1
+
+∫ f(x) δ(x-a) dx = f(a)</code>
+                    </div>
+
+                    <div class="example-grid">
+                        <div class="example-card">
+                            <strong>شحنة نقطية</strong>
+                            <p>تظهر دلتا عندما نمثل شحنة مركزة في نقطة واحدة بدل أن تكون موزعة على حجم كبير.</p>
+                        </div>
+                        <div class="example-card">
+                            <strong>نبضة قوة</strong>
+                            <p>في النماذج المثالية تمثل قوة شديدة جدًا تعمل في زمن قصير جدًا مع أثر كلي محدود.</p>
+                        </div>
+                        <div class="example-card">
+                            <strong>جهد دلتا</strong>
+                            <p>في ميكانيكا الكم نستعملها لنمذجة بئر أو حاجز شديد التمركز ومفيد جدًا تعليميًا.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="quantum-delta">
+            <div class="section-heading">
+                <h3>2. التطبيق الكمومي: بئر دلتا الجاذب</h3>
+                <p>نأخذ في وحدات مبسطة العلاقة <span dir="ltr">V(x) = -g δ(x)</span> مع <span dir="ltr">g &gt; 0</span>. عندها توجد حالة مقيدة واحدة، والدالة الموجية تكون مستمرة لكن مشتقتها تقفز عند الصفر.</p>
+            </div>
+
+            <div class="content-grid">
+                <article class="card">
+                    <h3>محاكاة الحالة المقيدة</h3>
+                    <p>كلما زادت شدة البئر g أصبح التمركز حول الصفر أكبر، وصارت الطاقة أكثر سلبية.</p>
+
+                    <div class="control-grid">
+                        <div class="control-group">
+                            <label for="strengthRange">شدة البئر g</label>
+                            <input id="strengthRange" type="range" min="0.40" max="6.00" step="0.01" value="2.20">
+                            <div class="value-display" id="strengthValue">2.20</div>
+                        </div>
+                    </div>
+
+                    <div class="plot-wrap">
+                        <canvas id="quantumCanvas" width="900" height="380"></canvas>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <strong>κ</strong>
+                            <span id="kappaValue">1.100</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>الطاقة E</strong>
+                            <span id="energyValue">-1.210</span>
+                        </div>
+                        <div class="stat-box">
+                            <strong>القفزة في المشتقة</strong>
+                            <span id="jumpValue">-2.200 ψ(0)</span>
+                        </div>
+                    </div>
+
+                    <div class="formula-box">
+                        <code>في الوحدات المختارة:
+κ = g / 2
+E = -κ² = -g² / 4
+ψ(x) = √κ exp(-κ |x|)</code>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <h3>كيف نفسر الشكل؟</h3>
+                    <p>
+                        القمة البرتقالية الرفيعة في منتصف الرسم تمثل دلتا تمثيلًا رمزيًا، وليست منحنى عاديًا بعرض حقيقي.
+                        المنحنى الأزرق يمثل الدالة الموجية المقيدة، أما الأخضر فيمثل كثافة الاحتمال
+                        <span dir="ltr">|ψ(x)|²</span>.
+                    </p>
+
+                    <div class="formula-box">
+                        <code>ψ مستمرة عند x = 0
+
+لكن:
+ψ'(0⁺) - ψ'(0⁻) = -g ψ(0)</code>
+                    </div>
+
+                    <p>
+                        هذه القفزة في المشتقة هي الأثر المباشر لجهد دلتا. لذلك فالمحاكاة لا تكتفي برسم “إبرة” في الجهد،
+                        بل تبين أيضًا كيف ينعكس هذا التمركز الحاد على شكل الحل الكمومي نفسه.
+                    </p>
+
+                    <div class="example-grid">
+                        <div class="example-card">
+                            <strong>بدون الجهد</strong>
+                            <p>لا نحصل على هذه الحالة المقيدة المحلية حول الصفر في هذا النموذج المبسط.</p>
+                        </div>
+                        <div class="example-card">
+                            <strong>مع بئر دلتا</strong>
+                            <p>تظهر حالة مقيدة واحدة فقط، ويزداد تمركزها بزيادة g.</p>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <p class="footer-note">هذه الصفحة مستقلة ويمكن رفعها وحدها دون تعديل أي صفحة أخرى في الموقع.</p>
+    </main>
+
+    <script>
+        const epsilonRange = document.getElementById("epsilonRange");
+        const epsilonValue = document.getElementById("epsilonValue");
+        const peakValue = document.getElementById("peakValue");
+        const areaValue = document.getElementById("areaValue");
+        const deltaCanvas = document.getElementById("deltaCanvas");
+
+        const strengthRange = document.getElementById("strengthRange");
+        const strengthValue = document.getElementById("strengthValue");
+        const kappaValue = document.getElementById("kappaValue");
+        const energyValue = document.getElementById("energyValue");
+        const jumpValue = document.getElementById("jumpValue");
+        const quantumCanvas = document.getElementById("quantumCanvas");
+
+        function sampleArea(epsilon) {
+            const minX = -6;
+            const maxX = 6;
+            const steps = 2000;
+            const dx = (maxX - minX) / steps;
+            let area = 0;
+            for (let i = 0; i < steps; i += 1) {
+                const x = minX + i * dx;
+                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
+                area += y * dx;
+            }
+            return area;
+        }
+
+        function drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY, color = "#b9c9d8") {
+            const plotWidth = width - margin.left - margin.right;
+            const plotHeight = height - margin.top - margin.bottom;
+            const xScale = plotWidth / (maxX - minX);
+            const yScale = plotHeight / (maxY - minY);
+            const xZero = margin.left + (-minX) * xScale;
+            const yZero = height - margin.bottom - (-minY) * yScale;
+
+            ctx.strokeStyle = color;
+            ctx.lineWidth = 1.2;
+            ctx.beginPath();
+            ctx.moveTo(margin.left, yZero);
+            ctx.lineTo(width - margin.right, yZero);
+            ctx.moveTo(xZero, margin.top);
+            ctx.lineTo(xZero, height - margin.bottom);
+            ctx.stroke();
+
+            return {
+                toCanvasX(x) { return margin.left + (x - minX) * xScale; },
+                toCanvasY(y) { return height - margin.bottom - (y - minY) * yScale; }
+            };
+        }
+
+        function writeLabel(ctx, text, x, y, align = "start", color = "#42627e") {
+            ctx.fillStyle = color;
+            ctx.textAlign = align;
+            ctx.font = "600 15px Cairo";
+            ctx.fillText(text, x, y);
+        }
+
+        function drawDeltaApprox() {
+            const ctx = deltaCanvas.getContext("2d");
+            const width = deltaCanvas.width;
+            const height = deltaCanvas.height;
+            const epsilon = parseFloat(epsilonRange.value);
+            const peak = 1 / (Math.sqrt(Math.PI) * epsilon);
+            const area = sampleArea(epsilon);
+            const margin = { top: 28, right: 22, bottom: 38, left: 48 };
+            const minX = -6;
+            const maxX = 6;
+            const minY = -0.1;
+            const maxY = Math.max(peak * 1.18, 1.5);
+
+            epsilonValue.textContent = epsilon.toFixed(2);
+            peakValue.textContent = peak.toFixed(3);
+            areaValue.textContent = area.toFixed(3);
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "#f6fbff";
+            ctx.fillRect(0, 0, width, height);
+
+            const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
+            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
+            writeLabel(ctx, "δ_ε(x)", margin.left + 4, margin.top - 6, "start");
+
+            ctx.strokeStyle = "#d78921";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let started = false;
+            for (let i = 0; i <= 900; i += 1) {
+                const x = minX + (i / 900) * (maxX - minX);
+                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
+                const cx = axes.toCanvasX(x);
+                const cy = axes.toCanvasY(y);
+                if (!started) {
+                    ctx.moveTo(cx, cy);
+                    started = true;
+                } else {
+                    ctx.lineTo(cx, cy);
+                }
+            }
+            ctx.stroke();
+
+            ctx.fillStyle = "rgba(240, 179, 90, 0.18)";
+            ctx.beginPath();
+            ctx.moveTo(axes.toCanvasX(minX), axes.toCanvasY(0));
+            for (let i = 0; i <= 900; i += 1) {
+                const x = minX + (i / 900) * (maxX - minX);
+                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
+                ctx.lineTo(axes.toCanvasX(x), axes.toCanvasY(y));
+            }
+            ctx.lineTo(axes.toCanvasX(maxX), axes.toCanvasY(0));
+            ctx.closePath();
+            ctx.fill();
+
+            writeLabel(ctx, "المساحة ≈ 1", width - margin.right - 8, margin.top + 22, "end", "#10263b");
+            writeLabel(ctx, "كلما صغرت ε ارتفعت القمة وضاق العرض", width - margin.right - 8, margin.top + 46, "end", "#5a7086");
+        }
+
+        function drawQuantumDelta() {
+            const ctx = quantumCanvas.getContext("2d");
+            const width = quantumCanvas.width;
+            const height = quantumCanvas.height;
+            const g = parseFloat(strengthRange.value);
+            const kappa = g / 2;
+            const energy = -(g * g) / 4;
+            const margin = { top: 28, right: 24, bottom: 42, left: 52 };
+            const minX = -6;
+            const maxX = 6;
+            const minY = -0.25;
+            const maxY = Math.max(1.65, Math.sqrt(kappa) * 1.25);
+
+            strengthValue.textContent = g.toFixed(2);
+            kappaValue.textContent = kappa.toFixed(3);
+            energyValue.textContent = energy.toFixed(3);
+            jumpValue.textContent = `-${g.toFixed(2)} ψ(0)`;
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "#f6fbff";
+            ctx.fillRect(0, 0, width, height);
+
+            const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
+            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
+            writeLabel(ctx, "ψ(x), |ψ|²", margin.left + 4, margin.top - 6, "start");
+
+            ctx.strokeStyle = "#8bb8d8";
+            ctx.lineWidth = 1;
+            ctx.setLineDash([6, 6]);
+            for (let tick = -5; tick <= 5; tick += 1) {
+                if (tick === 0) continue;
+                const x = axes.toCanvasX(tick);
+                ctx.beginPath();
+                ctx.moveTo(x, margin.top);
+                ctx.lineTo(x, height - margin.bottom);
+                ctx.stroke();
+            }
+            ctx.setLineDash([]);
+
+            const xZero = axes.toCanvasX(0);
+            const baseY = axes.toCanvasY(0);
+            const spikeTop = margin.top + 22;
+            const spikeBottom = baseY;
+            ctx.strokeStyle = "#d78921";
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.moveTo(xZero, spikeBottom);
+            ctx.lineTo(xZero, spikeTop);
+            ctx.stroke();
+
+            ctx.fillStyle = "#d78921";
+            ctx.beginPath();
+            ctx.moveTo(xZero - 10, spikeTop + 14);
+            ctx.lineTo(xZero, spikeTop - 6);
+            ctx.lineTo(xZero + 10, spikeTop + 14);
+            ctx.closePath();
+            ctx.fill();
+            writeLabel(ctx, "-gδ(x)", xZero + 16, spikeTop + 4, "start", "#d78921");
+
+            ctx.strokeStyle = "#2f6ea6";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            let started = false;
+            for (let i = 0; i <= 900; i += 1) {
+                const x = minX + (i / 900) * (maxX - minX);
+                const psi = Math.sqrt(kappa) * Math.exp(-kappa * Math.abs(x));
+                const cx = axes.toCanvasX(x);
+                const cy = axes.toCanvasY(psi);
+                if (!started) {
+                    ctx.moveTo(cx, cy);
+                    started = true;
+                } else {
+                    ctx.lineTo(cx, cy);
+                }
+            }
+            ctx.stroke();
+
+            ctx.strokeStyle = "#3d8f57";
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            started = false;
+            for (let i = 0; i <= 900; i += 1) {
+                const x = minX + (i / 900) * (maxX - minX);
+                const rho = kappa * Math.exp(-2 * kappa * Math.abs(x));
+                const cx = axes.toCanvasX(x);
+                const cy = axes.toCanvasY(rho);
+                if (!started) {
+                    ctx.moveTo(cx, cy);
+                    started = true;
+                } else {
+                    ctx.lineTo(cx, cy);
+                }
+            }
+            ctx.stroke();
+
+            writeLabel(ctx, "الأزرق: ψ(x)", width - margin.right - 8, margin.top + 18, "end", "#2f6ea6");
+            writeLabel(ctx, "الأخضر: |ψ(x)|²", width - margin.right - 8, margin.top + 42, "end", "#3d8f57");
+            writeLabel(ctx, "بزيادة g يزداد التمركز حول الصفر", width - margin.right - 8, margin.top + 66, "end", "#5a7086");
+        }
+
+        function refreshAll() {
+            drawDeltaApprox();
+            drawQuantumDelta();
+        }
+
+        epsilonRange.addEventListener("input", drawDeltaApprox);
+        strengthRange.addEventListener("input", drawQuantumDelta);
+        window.addEventListener("load", refreshAll);
+    </script>
+</body>
+</html>
