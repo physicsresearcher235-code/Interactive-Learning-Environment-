@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أدوات رياضية للفيزياء | دالة دلتا لديراك</title>
+    <title>أدوات رياضية في الفيزياء | دلتا لديراك</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
@@ -36,6 +36,7 @@ body {
 
 a { color: inherit; text-decoration: none; }
 .page-shell { width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 24px 0 48px; }
+
 .site-header {
     display: flex;
     flex-wrap: wrap;
@@ -50,9 +51,23 @@ a { color: inherit; text-decoration: none; }
     box-shadow: var(--shadow);
 }
 
-.brand-copy h1, .brand-copy p, .card h2, .card h3, .card p { margin: 0; }
-.brand-copy h1 { font-size: clamp(1.6rem, 2.6vw, 2.5rem); font-weight: 800; }
-.brand-copy p { margin-top: 8px; color: rgba(236, 242, 248, 0.82); line-height: 1.8; max-width: 60ch; }
+.brand-copy h1,
+.brand-copy p,
+.card h2,
+.card h3,
+.card p { margin: 0; }
+
+.brand-copy h1 {
+    font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+}
+
+.brand-copy p {
+    margin-top: 8px;
+    color: rgba(236, 242, 248, 0.82);
+    line-height: 1.8;
+    max-width: 60ch;
+}
 
 .top-nav {
     display: flex;
@@ -60,7 +75,8 @@ a { color: inherit; text-decoration: none; }
     gap: 10px;
 }
 
-.top-nav a, .primary-button {
+.top-nav a,
+.primary-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -76,7 +92,9 @@ a { color: inherit; text-decoration: none; }
     background: rgba(255, 255, 255, 0.07);
 }
 
-.top-nav a:hover, .primary-button:hover { transform: translateY(-2px); }
+.top-nav a:hover,
+.primary-button:hover { transform: translateY(-2px); }
+
 .top-nav a[aria-current="page"] {
     color: #11263b;
     background: var(--accent);
@@ -90,7 +108,9 @@ a { color: inherit; text-decoration: none; }
     margin-top: 28px;
 }
 
-.card, .hero-panel, .info-chip, .formula-box {
+.card,
+.hero-panel,
+.formula-box {
     background: var(--card);
     color: var(--ink);
     border-radius: var(--radius-lg);
@@ -126,33 +146,16 @@ a { color: inherit; text-decoration: none; }
 
 .hero-panel h2 {
     margin-top: 16px;
-    font-size: clamp(2rem, 4vw, 3.3rem);
+    font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.15;
 }
 
 .hero-panel p {
     margin-top: 14px;
-    max-width: 58ch;
+    max-width: 56ch;
     line-height: 1.95;
     color: var(--muted);
 }
-
-.hero-meta {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.info-chip {
-    padding: 16px;
-    background: rgba(16, 38, 59, 0.05);
-    border-radius: var(--radius-md);
-    box-shadow: none;
-}
-
-.info-chip strong { display: block; font-size: 1.08rem; }
-.info-chip span { color: var(--muted); font-size: 0.92rem; }
 
 .side-panel {
     padding: 28px;
@@ -164,7 +167,8 @@ a { color: inherit; text-decoration: none; }
 }
 
 .side-panel h3 { margin: 0 0 10px; font-size: 1.35rem; }
-.side-panel p, .side-panel li { color: rgba(236, 242, 248, 0.82); line-height: 1.9; }
+.side-panel p,
+.side-panel li { color: rgba(236, 242, 248, 0.82); line-height: 1.9; }
 .side-panel ul { margin: 0; padding-inline-start: 20px; }
 
 .section-heading { margin: 34px 0 16px; }
@@ -311,7 +315,8 @@ canvas {
 }
 
 @media (max-width: 980px) {
-    .hero, .content-grid {
+    .hero,
+    .content-grid {
         grid-template-columns: 1fr;
     }
 }
@@ -354,8 +359,8 @@ canvas {
     <main class="page-shell">
         <header class="site-header">
             <div class="brand-copy">
-                <h1>أدوات رياضية للفيزياء</h1>
-                <p>عرض مبسط يوضح سلوك دالة دلتا لديراك ثم أثر جهد دلتا على الدالة الموجية في ميكانيكا الكم.</p>
+                <h1>أدوات رياضية في الفيزياء</h1>
+                <p>دلتا لديراك وجهد دلتا في ميكانيكا الكم</p>
             </div>
             <nav class="top-nav" aria-label="روابط الصفحات">
                 <a href="./index.html">الرئيسية</a>
@@ -369,49 +374,31 @@ canvas {
 
         <section class="hero">
             <article class="hero-panel">
-                <span class="eyebrow">تمثيل بصري + تطبيق كمومي</span>
-                <h2>دلتا لديراك وجهد دلتا</h2>
-                <p>
-                    نعرض أولًا الشكل التقريبي لدالة دلتا، ثم نرى مباشرة كيف يغيّر بئر دلتا
-                    <span dir="ltr">V(x) = -g&nbsp;δ(x)</span>
-                    سلوك الدالة الموجية وتمركزها حول الصفر.
-                </p>
-                <div class="hero-meta">
-                    <div class="info-chip">
-                        <strong>دلتا</strong>
-                        <span>نبضة أضيق وقمة أعلى</span>
-                    </div>
-                    <div class="info-chip">
-                        <strong>الجهد</strong>
-                        <span>بئر جاذب عند الصفر</span>
-                    </div>
-                    <div class="info-chip">
-                        <strong>السلوك</strong>
-                        <span>تمركز أكبر كلما زادت g</span>
-                    </div>
-                </div>
+                <span class="eyebrow">دلتا لديراك</span>
+                <h2>جهد دلتا في ميكانيكا الكم</h2>
+                <p>عرض بصري مختصر يوضح شكل دلتا وأثر جهد دلتا على الدالة الموجية.</p>
             </article>
 
             <aside class="side-panel">
-                <h3>ما الذي نلاحظه؟</h3>
+                <h3>السلوك العام</h3>
                 <ul>
-                    <li>عند تصغير ε تضيق النبضة وتبقى المساحة ثابتة تقريبًا.</li>
-                    <li>عند زيادة g يزداد تمركز الدالة الموجية حول الصفر.</li>
-                    <li>تظهر قفزة في مشتقة ψ عند موضع دلتا.</li>
+                    <li>عند تصغير ε تضيق النبضة وترتفع القمة.</li>
+                    <li>عند زيادة g يزداد تمركز الدالة حول الصفر.</li>
+                    <li>تظهر قفزة في مشتقة ψ عند الصفر.</li>
                 </ul>
-                <a class="primary-button" href="#quantum-delta">عرض المحاكاة</a>
+                <a class="primary-button" href="#quantum-delta">المحاكاة</a>
             </aside>
         </section>
 
         <section>
             <div class="section-heading">
-                <h3>1. شكل دلتا</h3>
-                <p>غيّر قيمة ε وراقب الشكل العام.</p>
+                <h3>دلتا لديراك</h3>
+                <p>تمثيل بصري مبسط.</p>
             </div>
 
             <div class="content-grid">
                 <article class="card">
-                    <h3>نبضة تقترب من دلتا</h3>
+                    <h3>تمثيل دلتا</h3>
                     <p>كلما صغرت ε أصبح العرض أصغر والقمة أعلى.</p>
 
                     <div class="control-grid">
@@ -436,7 +423,7 @@ canvas {
                             <span id="areaValue">1.000</span>
                         </div>
                         <div class="stat-box">
-                            <strong>المغزى</strong>
+                            <strong>السلوك</strong>
                             <span>أعلى + أضيق</span>
                         </div>
                     </div>
@@ -447,11 +434,11 @@ canvas {
                 </article>
 
                 <article class="card">
-                    <h3>السلوك العام</h3>
-                    <p>دلتا تلتقط القيمة عند نقطة محددة، ولهذا تظهر كثيرًا عندما يكون التأثير متمركزًا جدًا عند موضع واحد.</p>
+                    <h3>فكرة سريعة</h3>
+                    <p>دلتا تمثل تأثيرًا متمركزًا جدًا عند نقطة واحدة.</p>
 
                     <div class="formula-box">
-                        <code>δ(x) = 0   عندما x ≠ 0
+                        <code>δ(x) = 0   when x ≠ 0
 
 ∫ δ(x) dx = 1
 
@@ -461,11 +448,11 @@ canvas {
                     <div class="example-grid">
                         <div class="example-card">
                             <strong>شحنة نقطية</strong>
-                            <p>تمثيل مصدر مركز في نقطة واحدة.</p>
+                            <p>مصدر مركز في نقطة واحدة.</p>
                         </div>
                         <div class="example-card">
                             <strong>نبضة قوة</strong>
-                            <p>تأثير شديد جدًا في زمن قصير جدًا.</p>
+                            <p>تأثير شديد خلال زمن قصير جدًا.</p>
                         </div>
                         <div class="example-card">
                             <strong>جهد دلتا</strong>
@@ -478,8 +465,8 @@ canvas {
 
         <section id="quantum-delta">
             <div class="section-heading">
-                <h3>2. جهد دلتا في ميكانيكا الكم</h3>
-                <p>في بئر دلتا الجاذب توجد حالة مقيدة واحدة، ويظهر أثر الجهد مباشرة في شكل ψ وتمركزها.</p>
+                <h3>جهد دلتا في ميكانيكا الكم</h3>
+                <p>تتغير شكل ψ وتمركزها مع شدة البئر.</p>
             </div>
 
             <div class="content-grid">
@@ -522,33 +509,32 @@ E = -g² / 4
                 </article>
 
                 <article class="card">
-                    <h3>قراءة الرسم</h3>
-                    <p>البرتقالي يمثل الجهد رمزيًا، الأزرق هو ψ، والأخضر هو <span dir="ltr">|ψ(x)|²</span>.</p>
+                    <h3>السلوك</h3>
+                    <p>البرتقالي يمثل الجهد، الأزرق هو ψ، والأخضر هو |ψ(x)|².</p>
 
                     <div class="formula-box">
-                        <code>ψ مستمرة عند x = 0
+                        <code>ψ is continuous at x = 0
 
-لكن:
-ψ'(0⁺) - ψ'(0⁻) = -g ψ(0)</code>
+ψ'(0+) - ψ'(0-) = -g ψ(0)</code>
                     </div>
 
-                    <p>الفكرة الأهم هنا: الجهد متمركز جدًا، لذلك يكون أثره حادًا عند الصفر ويظهر مباشرة في شكل الحل.</p>
+                    <p>كلما زادت شدة البئر أصبحت الحالة أكثر تمركزًا حول الصفر.</p>
 
                     <div class="example-grid">
                         <div class="example-card">
-                            <strong>بدون الجهد</strong>
-                            <p>لا يوجد هذا التمركز المحلي نفسه.</p>
+                            <strong>قيمة أصغر لـ g</strong>
+                            <p>تمركز أقل وانتشار أكبر.</p>
                         </div>
                         <div class="example-card">
-                            <strong>مع بئر دلتا</strong>
-                            <p>تظهر حالة مقيدة واحدة ويزداد تمركزها مع g.</p>
+                            <strong>قيمة أكبر لـ g</strong>
+                            <p>تمركز أكبر حول الصفر.</p>
                         </div>
                     </div>
                 </article>
             </div>
         </section>
 
-        <p class="footer-note">عرض مبسط يركز على السلوك العام.</p>
+        <p class="footer-note">عرض مبسط.</p>
     </main>
 
     <script>
@@ -568,7 +554,7 @@ E = -g² / 4
         function sampleArea(epsilon) {
             const minX = -6;
             const maxX = 6;
-            const steps = 2000;
+            const steps = 2500;
             const dx = (maxX - minX) / steps;
             let area = 0;
             for (let i = 0; i < steps; i += 1) {
@@ -634,6 +620,18 @@ E = -g² / 4
             writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
             writeLabel(ctx, "δ_ε(x)", margin.left + 4, margin.top - 6, "start");
 
+            ctx.fillStyle = "rgba(240, 179, 90, 0.18)";
+            ctx.beginPath();
+            ctx.moveTo(axes.toCanvasX(minX), axes.toCanvasY(0));
+            for (let i = 0; i <= 900; i += 1) {
+                const x = minX + (i / 900) * (maxX - minX);
+                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
+                ctx.lineTo(axes.toCanvasX(x), axes.toCanvasY(y));
+            }
+            ctx.lineTo(axes.toCanvasX(maxX), axes.toCanvasY(0));
+            ctx.closePath();
+            ctx.fill();
+
             ctx.strokeStyle = "#d78921";
             ctx.lineWidth = 3;
             ctx.beginPath();
@@ -652,20 +650,8 @@ E = -g² / 4
             }
             ctx.stroke();
 
-            ctx.fillStyle = "rgba(240, 179, 90, 0.18)";
-            ctx.beginPath();
-            ctx.moveTo(axes.toCanvasX(minX), axes.toCanvasY(0));
-            for (let i = 0; i <= 900; i += 1) {
-                const x = minX + (i / 900) * (maxX - minX);
-                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
-                ctx.lineTo(axes.toCanvasX(x), axes.toCanvasY(y));
-            }
-            ctx.lineTo(axes.toCanvasX(maxX), axes.toCanvasY(0));
-            ctx.closePath();
-            ctx.fill();
-
             writeLabel(ctx, "المساحة ≈ 1", width - margin.right - 8, margin.top + 22, "end", "#10263b");
-            writeLabel(ctx, "كلما صغرت ε ارتفعت القمة وضاق العرض", width - margin.right - 8, margin.top + 46, "end", "#5a7086");
+            writeLabel(ctx, "كلما صغرت ε صار الشكل أضيق", width - margin.right - 8, margin.top + 46, "end", "#5a7086");
         }
 
         function drawQuantumDelta() {
@@ -678,13 +664,13 @@ E = -g² / 4
             const margin = { top: 28, right: 24, bottom: 42, left: 52 };
             const minX = -6;
             const maxX = 6;
-            const minY = -0.25;
-            const maxY = Math.max(1.65, Math.sqrt(kappa) * 1.25);
+            const minY = -0.2;
+            const maxY = Math.max(1.35, Math.sqrt(kappa) * 1.28);
 
             strengthValue.textContent = g.toFixed(2);
             kappaValue.textContent = kappa.toFixed(3);
             energyValue.textContent = energy.toFixed(3);
-            jumpValue.textContent = `-${g.toFixed(2)} ψ(0)`;
+            jumpValue.textContent = `${(-g).toFixed(3)} ψ(0)`;
 
             ctx.clearRect(0, 0, width, height);
             ctx.fillStyle = "#f6fbff";
@@ -692,90 +678,70 @@ E = -g² / 4
 
             const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
             writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
-            writeLabel(ctx, "ψ(x), |ψ|²", margin.left + 4, margin.top - 6, "start");
+            writeLabel(ctx, "ψ(x)", margin.left + 4, margin.top - 6, "start");
 
-            ctx.strokeStyle = "#8bb8d8";
-            ctx.lineWidth = 1;
-            ctx.setLineDash([6, 6]);
-            for (let tick = -5; tick <= 5; tick += 1) {
-                if (tick === 0) continue;
-                const x = axes.toCanvasX(tick);
-                ctx.beginPath();
-                ctx.moveTo(x, margin.top);
-                ctx.lineTo(x, height - margin.bottom);
-                ctx.stroke();
-            }
-            ctx.setLineDash([]);
-
-            const xZero = axes.toCanvasX(0);
-            const baseY = axes.toCanvasY(0);
-            const spikeTop = margin.top + 22;
-            const spikeBottom = baseY;
-            ctx.strokeStyle = "#d78921";
-            ctx.lineWidth = 4;
+            const spikeX = axes.toCanvasX(0);
+            ctx.strokeStyle = "rgba(215, 137, 33, 0.95)";
+            ctx.lineWidth = 3;
             ctx.beginPath();
-            ctx.moveTo(xZero, spikeBottom);
-            ctx.lineTo(xZero, spikeTop);
+            ctx.moveTo(spikeX, axes.toCanvasY(0));
+            ctx.lineTo(spikeX, axes.toCanvasY(maxY * 0.72));
             ctx.stroke();
 
             ctx.fillStyle = "#d78921";
             ctx.beginPath();
-            ctx.moveTo(xZero - 10, spikeTop + 14);
-            ctx.lineTo(xZero, spikeTop - 6);
-            ctx.lineTo(xZero + 10, spikeTop + 14);
+            ctx.moveTo(spikeX - 10, axes.toCanvasY(maxY * 0.72));
+            ctx.lineTo(spikeX + 10, axes.toCanvasY(maxY * 0.72));
+            ctx.lineTo(spikeX, axes.toCanvasY(maxY * 0.95));
             ctx.closePath();
             ctx.fill();
-            writeLabel(ctx, "-gδ(x)", xZero + 16, spikeTop + 4, "start", "#d78921");
 
-            ctx.strokeStyle = "#2f6ea6";
+            ctx.strokeStyle = "#2678b8";
             ctx.lineWidth = 3;
             ctx.beginPath();
-            let started = false;
-            for (let i = 0; i <= 900; i += 1) {
-                const x = minX + (i / 900) * (maxX - minX);
+            let startedPsi = false;
+            for (let i = 0; i <= 1000; i += 1) {
+                const x = minX + (i / 1000) * (maxX - minX);
                 const psi = Math.sqrt(kappa) * Math.exp(-kappa * Math.abs(x));
                 const cx = axes.toCanvasX(x);
                 const cy = axes.toCanvasY(psi);
-                if (!started) {
+                if (!startedPsi) {
                     ctx.moveTo(cx, cy);
-                    started = true;
+                    startedPsi = true;
                 } else {
                     ctx.lineTo(cx, cy);
                 }
             }
             ctx.stroke();
 
-            ctx.strokeStyle = "#3d8f57";
-            ctx.lineWidth = 3;
+            ctx.strokeStyle = "#37a36a";
+            ctx.lineWidth = 2.8;
             ctx.beginPath();
-            started = false;
-            for (let i = 0; i <= 900; i += 1) {
-                const x = minX + (i / 900) * (maxX - minX);
+            let startedRho = false;
+            for (let i = 0; i <= 1000; i += 1) {
+                const x = minX + (i / 1000) * (maxX - minX);
                 const rho = kappa * Math.exp(-2 * kappa * Math.abs(x));
                 const cx = axes.toCanvasX(x);
                 const cy = axes.toCanvasY(rho);
-                if (!started) {
+                if (!startedRho) {
                     ctx.moveTo(cx, cy);
-                    started = true;
+                    startedRho = true;
                 } else {
                     ctx.lineTo(cx, cy);
                 }
             }
             ctx.stroke();
 
-            writeLabel(ctx, "الأزرق: ψ(x)", width - margin.right - 8, margin.top + 18, "end", "#2f6ea6");
-            writeLabel(ctx, "الأخضر: |ψ(x)|²", width - margin.right - 8, margin.top + 42, "end", "#3d8f57");
-            writeLabel(ctx, "بزيادة g يزداد التمركز حول الصفر", width - margin.right - 8, margin.top + 66, "end", "#5a7086");
-        }
-
-        function refreshAll() {
-            drawDeltaApprox();
-            drawQuantumDelta();
+            writeLabel(ctx, "V(x)", spikeX + 18, axes.toCanvasY(maxY * 0.82), "start", "#d78921");
+            writeLabel(ctx, "ψ", width - margin.right - 8, margin.top + 20, "end", "#2678b8");
+            writeLabel(ctx, "|ψ|²", width - margin.right - 8, margin.top + 44, "end", "#37a36a");
         }
 
         epsilonRange.addEventListener("input", drawDeltaApprox);
         strengthRange.addEventListener("input", drawQuantumDelta);
-        window.addEventListener("load", refreshAll);
+
+        drawDeltaApprox();
+        drawQuantumDelta();
     </script>
 </body>
 </html>
