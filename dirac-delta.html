@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أدوات رياضية في الفيزياء | دلتا لديراك</title>
+    <title>أدوات رياضية في الفيزياء | تمثيل Delta Dirac</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
@@ -53,20 +53,11 @@ a { color: inherit; text-decoration: none; }
 
 .brand-copy h1,
 .brand-copy p,
-.card h2,
-.card h3,
-.card p { margin: 0; }
+.card h3 { margin: 0; }
 
 .brand-copy h1 {
     font-size: clamp(1.6rem, 2.6vw, 2.5rem);
     font-weight: 800;
-}
-
-.brand-copy p {
-    margin-top: 8px;
-    color: rgba(236, 242, 248, 0.82);
-    line-height: 1.8;
-    max-width: 60ch;
 }
 
 .top-nav {
@@ -75,8 +66,7 @@ a { color: inherit; text-decoration: none; }
     gap: 10px;
 }
 
-.top-nav a,
-.primary-button {
+.top-nav a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -84,17 +74,12 @@ a { color: inherit; text-decoration: none; }
     padding: 0 18px;
     border-radius: 999px;
     font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
     transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
-.top-nav a {
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.07);
-}
-
-.top-nav a:hover,
-.primary-button:hover { transform: translateY(-2px); }
-
+.top-nav a:hover { transform: translateY(-2px); }
 .top-nav a[aria-current="page"] {
     color: #11263b;
     background: var(--accent);
@@ -102,15 +87,11 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.85fr);
-    gap: 24px;
     margin-top: 28px;
 }
 
-.card,
 .hero-panel,
-.formula-box {
+.card {
     background: var(--card);
     color: var(--ink);
     border-radius: var(--radius-lg);
@@ -145,45 +126,16 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-panel h2 {
-    margin-top: 16px;
+    margin: 16px 0 0;
     font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.15;
 }
 
-.hero-panel p {
-    margin-top: 14px;
-    max-width: 56ch;
-    line-height: 1.95;
-    color: var(--muted);
-}
-
-.side-panel {
-    padding: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-lg);
-    background:
-        linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
-        rgba(7, 24, 36, 0.3);
-}
-
-.side-panel h3 { margin: 0 0 10px; font-size: 1.35rem; }
-.side-panel p,
-.side-panel li { color: rgba(236, 242, 248, 0.82); line-height: 1.9; }
-.side-panel ul { margin: 0; padding-inline-start: 20px; }
-
 .section-heading { margin: 34px 0 16px; }
 .section-heading h3 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.9rem); }
-.section-heading p { margin: 6px 0 0; color: rgba(236, 242, 248, 0.78); }
-
-.content-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-}
 
 .card { padding: 28px; }
 .card h3 { font-size: 1.35rem; margin-bottom: 10px; }
-.card p { line-height: 1.9; color: var(--muted); }
 
 .control-grid {
     display: grid;
@@ -264,7 +216,6 @@ canvas {
     padding: 18px;
     border-radius: var(--radius-md);
     background: rgba(16, 38, 59, 0.05);
-    box-shadow: none;
 }
 
 .formula-box code {
@@ -276,51 +227,6 @@ canvas {
     line-height: 1.9;
 }
 
-.example-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-    margin-top: 18px;
-}
-
-.example-card {
-    padding: 22px;
-    border-radius: var(--radius-md);
-    background: rgba(16, 38, 59, 0.05);
-}
-
-.example-card strong {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1.1rem;
-}
-
-.example-card p {
-    margin: 0;
-    color: var(--muted);
-}
-
-.primary-button {
-    color: #11263b;
-    background: var(--accent);
-    width: fit-content;
-    margin-top: 18px;
-}
-
-.footer-note {
-    margin-top: 22px;
-    text-align: center;
-    color: rgba(236, 242, 248, 0.64);
-    font-size: 0.95rem;
-}
-
-@media (max-width: 980px) {
-    .hero,
-    .content-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 720px) {
     .page-shell {
         width: min(100% - 20px, 1180px);
@@ -329,8 +235,7 @@ canvas {
 
     .site-header,
     .hero-panel,
-    .card,
-    .side-panel {
+    .card {
         border-radius: 22px;
     }
 
@@ -374,150 +279,61 @@ canvas {
         <section class="hero">
             <article class="hero-panel">
                 <span class="eyebrow">أدوات رياضية في الفيزياء</span>
-                <h2>دلتا لديراك</h2>
+                <h2>تمثيل Delta Dirac</h2>
             </article>
-
-            <aside class="side-panel">
-                <h3>جهد دلتا في ميكانيكا الكم</h3>
-                <a class="primary-button" href="#quantum-delta">المحاكاة</a>
-            </aside>
         </section>
 
         <section>
             <div class="section-heading">
-                <h3>دلتا لديراك</h3>
+                <h3>تمثيل Delta Dirac</h3>
             </div>
 
-            <div class="content-grid">
-                <article class="card">
-                    <h3>تمثيل دلتا</h3>
+            <article class="card">
+                <h3>تمثيل Delta Dirac</h3>
 
-                    <div class="control-grid">
-                        <div class="control-group">
-                            <label for="epsilonRange">ε</label>
-                            <input id="epsilonRange" type="range" min="0.12" max="1.60" step="0.01" value="0.48">
-                            <div class="value-display" id="epsilonValue">0.48</div>
-                        </div>
+                <div class="control-grid">
+                    <div class="control-group">
+                        <label for="epsilonRange">ε</label>
+                        <input id="epsilonRange" type="range" min="0.20" max="2.00" step="0.01" value="0.60">
+                        <div class="value-display" id="epsilonValue">0.60</div>
                     </div>
+                </div>
 
-                    <div class="plot-wrap">
-                        <canvas id="deltaCanvas" width="900" height="360"></canvas>
+                <div class="plot-wrap">
+                    <canvas id="deltaCanvas" width="960" height="420"></canvas>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <strong>العرض</strong>
+                        <span id="widthValue">0.600</span>
                     </div>
-
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <strong>القمة</strong>
-                            <span id="peakValue">0.000</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>المساحة</strong>
-                            <span id="areaValue">1.000</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>السلوك</strong>
-                            <span>أعلى + أضيق</span>
-                        </div>
+                    <div class="stat-box">
+                        <strong>الارتفاع</strong>
+                        <span id="heightValue">1.667</span>
                     </div>
-                </article>
-
-                <article class="card">
-                    <h3>أمثلة</h3>
-
-                    <div class="example-grid">
-                        <div class="example-card">
-                            <strong>شحنة نقطية</strong>
-                        </div>
-                        <div class="example-card">
-                            <strong>نبضة قوة</strong>
-                        </div>
-                        <div class="example-card">
-                            <strong>جهد دلتا</strong>
-                        </div>
+                    <div class="stat-box">
+                        <strong>المساحة</strong>
+                        <span id="areaValue">1.000</span>
                     </div>
-                </article>
-            </div>
-        </section>
+                </div>
 
-        <section id="quantum-delta">
-            <div class="section-heading">
-                <h3>جهد دلتا في ميكانيكا الكم</h3>
-            </div>
-
-            <div class="content-grid">
-                <article class="card">
-                    <h3>أثر شدة البئر</h3>
-
-                    <div class="control-grid">
-                        <div class="control-group">
-                            <label for="strengthRange">شدة البئر g</label>
-                            <input id="strengthRange" type="range" min="0.40" max="6.00" step="0.01" value="2.20">
-                            <div class="value-display" id="strengthValue">2.20</div>
-                        </div>
-                    </div>
-
-                    <div class="plot-wrap">
-                        <canvas id="quantumCanvas" width="900" height="380"></canvas>
-                    </div>
-
-                    <div class="stats-grid">
-                        <div class="stat-box">
-                            <strong>κ</strong>
-                            <span id="kappaValue">1.100</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>الطاقة E</strong>
-                            <span id="energyValue">-1.210</span>
-                        </div>
-                        <div class="stat-box">
-                            <strong>قفزة المشتقة</strong>
-                            <span id="jumpValue">-2.200 ψ(0)</span>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <h3>السلوك</h3>
-
-                    <div class="example-grid">
-                        <div class="example-card">
-                            <strong>قيمة أصغر لـ g</strong>
-                        </div>
-                        <div class="example-card">
-                            <strong>قيمة أكبر لـ g</strong>
-                        </div>
-                    </div>
-                </article>
-            </div>
+                <div class="formula-box">
+                    <code>width = ε
+height = 1 / ε
+area = ε × (1 / ε) = 1</code>
+                </div>
+            </article>
         </section>
     </main>
 
     <script>
         const epsilonRange = document.getElementById("epsilonRange");
         const epsilonValue = document.getElementById("epsilonValue");
-        const peakValue = document.getElementById("peakValue");
+        const widthValue = document.getElementById("widthValue");
+        const heightValue = document.getElementById("heightValue");
         const areaValue = document.getElementById("areaValue");
         const deltaCanvas = document.getElementById("deltaCanvas");
-
-        const strengthRange = document.getElementById("strengthRange");
-        const strengthValue = document.getElementById("strengthValue");
-        const kappaValue = document.getElementById("kappaValue");
-        const energyValue = document.getElementById("energyValue");
-        const jumpValue = document.getElementById("jumpValue");
-        const quantumCanvas = document.getElementById("quantumCanvas");
-
-        function sampleArea(epsilon) {
-            const minX = -6;
-            const maxX = 6;
-            const steps = 2500;
-            const dx = (maxX - minX) / steps;
-            let area = 0;
-            for (let i = 0; i < steps; i += 1) {
-                const x = minX + i * dx;
-                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
-                area += y * dx;
-            }
-            return area;
-        }
 
         function drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY, color = "#b9c9d8") {
             const plotWidth = width - margin.left - margin.right;
@@ -549,21 +365,23 @@ canvas {
             ctx.fillText(text, x, y);
         }
 
-        function drawDeltaApprox() {
+        function drawDeltaRect() {
             const ctx = deltaCanvas.getContext("2d");
             const width = deltaCanvas.width;
             const height = deltaCanvas.height;
             const epsilon = parseFloat(epsilonRange.value);
-            const peak = 1 / (Math.sqrt(Math.PI) * epsilon);
-            const area = sampleArea(epsilon);
-            const margin = { top: 28, right: 22, bottom: 38, left: 48 };
-            const minX = -6;
-            const maxX = 6;
-            const minY = -0.1;
-            const maxY = Math.max(peak * 1.18, 1.5);
+            const rectHeight = 1 / epsilon;
+            const area = epsilon * rectHeight;
+            const halfWidth = epsilon / 2;
+            const margin = { top: 28, right: 26, bottom: 56, left: 56 };
+            const minX = -4;
+            const maxX = 4;
+            const minY = -0.35;
+            const maxY = Math.max(rectHeight * 1.35, 2.1);
 
             epsilonValue.textContent = epsilon.toFixed(2);
-            peakValue.textContent = peak.toFixed(3);
+            widthValue.textContent = epsilon.toFixed(3);
+            heightValue.textContent = rectHeight.toFixed(3);
             areaValue.textContent = area.toFixed(3);
 
             ctx.clearRect(0, 0, width, height);
@@ -571,131 +389,43 @@ canvas {
             ctx.fillRect(0, 0, width, height);
 
             const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
-            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
+            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 8, "start");
             writeLabel(ctx, "δ_ε(x)", margin.left + 4, margin.top - 6, "start");
 
-            ctx.fillStyle = "rgba(240, 179, 90, 0.18)";
-            ctx.beginPath();
-            ctx.moveTo(axes.toCanvasX(minX), axes.toCanvasY(0));
-            for (let i = 0; i <= 900; i += 1) {
-                const x = minX + (i / 900) * (maxX - minX);
-                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
-                ctx.lineTo(axes.toCanvasX(x), axes.toCanvasY(y));
-            }
-            ctx.lineTo(axes.toCanvasX(maxX), axes.toCanvasY(0));
-            ctx.closePath();
-            ctx.fill();
+            const left = axes.toCanvasX(-halfWidth);
+            const right = axes.toCanvasX(halfWidth);
+            const top = axes.toCanvasY(rectHeight);
+            const base = axes.toCanvasY(0);
+
+            ctx.fillStyle = "rgba(240, 179, 90, 0.25)";
+            ctx.fillRect(left, top, right - left, base - top);
 
             ctx.strokeStyle = "#d78921";
             ctx.lineWidth = 3;
+            ctx.strokeRect(left, top, right - left, base - top);
+
+            ctx.strokeStyle = "#42627e";
+            ctx.lineWidth = 2;
+            const measureY = axes.toCanvasY(-0.18);
             ctx.beginPath();
-            let started = false;
-            for (let i = 0; i <= 900; i += 1) {
-                const x = minX + (i / 900) * (maxX - minX);
-                const y = Math.exp(-Math.pow(x / epsilon, 2)) / (Math.sqrt(Math.PI) * epsilon);
-                const cx = axes.toCanvasX(x);
-                const cy = axes.toCanvasY(y);
-                if (!started) {
-                    ctx.moveTo(cx, cy);
-                    started = true;
-                } else {
-                    ctx.lineTo(cx, cy);
-                }
-            }
+            ctx.moveTo(left, measureY);
+            ctx.lineTo(right, measureY);
             ctx.stroke();
 
-            writeLabel(ctx, "المساحة ≈ 1", width - margin.right - 8, margin.top + 22, "end", "#10263b");
-            writeLabel(ctx, "كلما صغرت ε صار الشكل أضيق", width - margin.right - 8, margin.top + 46, "end", "#5a7086");
+            ctx.beginPath();
+            ctx.moveTo(left, measureY - 8);
+            ctx.lineTo(left, measureY + 8);
+            ctx.moveTo(right, measureY - 8);
+            ctx.lineTo(right, measureY + 8);
+            ctx.stroke();
+
+            writeLabel(ctx, "ε", (left + right) / 2, measureY - 12, "center", "#10263b");
+            writeLabel(ctx, "1 / ε", (left + right) / 2, top - 12, "center", "#10263b");
+            writeLabel(ctx, "ε × (1 / ε) = 1", width - margin.right - 8, margin.top + 22, "end", "#5a7086");
         }
 
-        function drawQuantumDelta() {
-            const ctx = quantumCanvas.getContext("2d");
-            const width = quantumCanvas.width;
-            const height = quantumCanvas.height;
-            const g = parseFloat(strengthRange.value);
-            const kappa = g / 2;
-            const energy = -(g * g) / 4;
-            const margin = { top: 28, right: 24, bottom: 42, left: 52 };
-            const minX = -6;
-            const maxX = 6;
-            const minY = -0.2;
-            const maxY = Math.max(1.35, Math.sqrt(kappa) * 1.28);
-
-            strengthValue.textContent = g.toFixed(2);
-            kappaValue.textContent = kappa.toFixed(3);
-            energyValue.textContent = energy.toFixed(3);
-            jumpValue.textContent = `${(-g).toFixed(3)} ψ(0)`;
-
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = "#f6fbff";
-            ctx.fillRect(0, 0, width, height);
-
-            const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
-            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 6, "start");
-            writeLabel(ctx, "ψ(x)", margin.left + 4, margin.top - 6, "start");
-
-            const spikeX = axes.toCanvasX(0);
-            ctx.strokeStyle = "rgba(215, 137, 33, 0.95)";
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            ctx.moveTo(spikeX, axes.toCanvasY(0));
-            ctx.lineTo(spikeX, axes.toCanvasY(maxY * 0.72));
-            ctx.stroke();
-
-            ctx.fillStyle = "#d78921";
-            ctx.beginPath();
-            ctx.moveTo(spikeX - 10, axes.toCanvasY(maxY * 0.72));
-            ctx.lineTo(spikeX + 10, axes.toCanvasY(maxY * 0.72));
-            ctx.lineTo(spikeX, axes.toCanvasY(maxY * 0.95));
-            ctx.closePath();
-            ctx.fill();
-
-            ctx.strokeStyle = "#2678b8";
-            ctx.lineWidth = 3;
-            ctx.beginPath();
-            let startedPsi = false;
-            for (let i = 0; i <= 1000; i += 1) {
-                const x = minX + (i / 1000) * (maxX - minX);
-                const psi = Math.sqrt(kappa) * Math.exp(-kappa * Math.abs(x));
-                const cx = axes.toCanvasX(x);
-                const cy = axes.toCanvasY(psi);
-                if (!startedPsi) {
-                    ctx.moveTo(cx, cy);
-                    startedPsi = true;
-                } else {
-                    ctx.lineTo(cx, cy);
-                }
-            }
-            ctx.stroke();
-
-            ctx.strokeStyle = "#37a36a";
-            ctx.lineWidth = 2.8;
-            ctx.beginPath();
-            let startedRho = false;
-            for (let i = 0; i <= 1000; i += 1) {
-                const x = minX + (i / 1000) * (maxX - minX);
-                const rho = kappa * Math.exp(-2 * kappa * Math.abs(x));
-                const cx = axes.toCanvasX(x);
-                const cy = axes.toCanvasY(rho);
-                if (!startedRho) {
-                    ctx.moveTo(cx, cy);
-                    startedRho = true;
-                } else {
-                    ctx.lineTo(cx, cy);
-                }
-            }
-            ctx.stroke();
-
-            writeLabel(ctx, "V(x)", spikeX + 18, axes.toCanvasY(maxY * 0.82), "start", "#d78921");
-            writeLabel(ctx, "ψ", width - margin.right - 8, margin.top + 20, "end", "#2678b8");
-            writeLabel(ctx, "|ψ|²", width - margin.right - 8, margin.top + 44, "end", "#37a36a");
-        }
-
-        epsilonRange.addEventListener("input", drawDeltaApprox);
-        strengthRange.addEventListener("input", drawQuantumDelta);
-
-        drawDeltaApprox();
-        drawQuantumDelta();
+        epsilonRange.addEventListener("input", drawDeltaRect);
+        drawDeltaRect();
     </script>
 </body>
 </html>
