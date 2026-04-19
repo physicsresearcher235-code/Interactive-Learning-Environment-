@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>أدوات رياضية في الفيزياء | تمثيل Delta Dirac</title>
+    <title>أدوات رياضية في الفيزياء | تقريب بصري لـ Delta Dirac</title>
     <style>
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
@@ -52,7 +52,6 @@ a { color: inherit; text-decoration: none; }
 }
 
 .brand-copy h1,
-.brand-copy p,
 .card h3 { margin: 0; }
 
 .brand-copy h1 {
@@ -86,10 +85,7 @@ a { color: inherit; text-decoration: none; }
     border-color: transparent;
 }
 
-.hero {
-    margin-top: 28px;
-}
-
+.hero { margin-top: 28px; }
 .hero-panel,
 .card {
     background: var(--card);
@@ -135,25 +131,27 @@ a { color: inherit; text-decoration: none; }
 .section-heading h3 { margin: 0; font-size: clamp(1.4rem, 2vw, 1.9rem); }
 
 .card { padding: 28px; }
-.card h3 { font-size: 1.35rem; margin-bottom: 10px; }
+.card h3 { font-size: 1.35rem; margin-bottom: 16px; }
 
-.control-grid {
+.controls-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: minmax(220px, 1fr) minmax(240px, 1.2fr);
     gap: 16px;
-    margin: 18px 0;
+    margin-bottom: 18px;
 }
 
-.control-group {
+.control-group,
+.mode-group {
     padding: 16px;
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: rgba(16, 38, 59, 0.03);
 }
 
-.control-group label {
+.control-group label,
+.mode-group strong {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
     font-weight: 700;
 }
 
@@ -173,8 +171,33 @@ a { color: inherit; text-decoration: none; }
     font-family: "Cascadia Mono", "Consolas", monospace;
 }
 
+.mode-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.mode-button {
+    min-height: 44px;
+    padding: 0 18px;
+    border: 1px solid rgba(16, 38, 59, 0.12);
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.06);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.mode-button:hover { transform: translateY(-2px); }
+.mode-button.active {
+    background: var(--accent);
+    color: #11263b;
+    border-color: transparent;
+}
+
 .plot-wrap {
-    margin-top: 16px;
     border-radius: 24px;
     overflow: hidden;
     border: 1px solid rgba(16, 38, 59, 0.1);
@@ -189,7 +212,7 @@ canvas {
 
 .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;
     margin-top: 16px;
 }
@@ -211,20 +234,10 @@ canvas {
     font-family: "Cascadia Mono", "Consolas", monospace;
 }
 
-.formula-box {
-    margin-top: 18px;
-    padding: 18px;
-    border-radius: var(--radius-md);
-    background: rgba(16, 38, 59, 0.05);
-}
-
-.formula-box code {
-    direction: ltr;
-    display: block;
-    white-space: pre-wrap;
-    font-family: "Cascadia Mono", "Consolas", monospace;
-    font-size: 0.96rem;
-    line-height: 1.9;
+@media (max-width: 860px) {
+    .controls-row {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 720px) {
@@ -237,11 +250,6 @@ canvas {
     .hero-panel,
     .card {
         border-radius: 22px;
-    }
-
-    .site-header,
-    .hero-panel,
-    .card {
         padding: 22px;
     }
 
@@ -279,19 +287,25 @@ canvas {
         <section class="hero">
             <article class="hero-panel">
                 <span class="eyebrow">أدوات رياضية في الفيزياء</span>
-                <h2>تمثيل Delta Dirac</h2>
+                <h2>تقريب بصري لـ Delta Dirac</h2>
             </article>
         </section>
 
         <section>
             <div class="section-heading">
-                <h3>تمثيل Delta Dirac</h3>
+                <h3>تقريب بصري لـ Delta Dirac</h3>
             </div>
 
             <article class="card">
-                <h3>تمثيل Delta Dirac</h3>
+                <div class="controls-row">
+                    <div class="mode-group">
+                        <strong>نوع التقريب</strong>
+                        <div class="mode-buttons">
+                            <button class="mode-button active" type="button" data-mode="rectangle">مستطيل</button>
+                            <button class="mode-button" type="button" data-mode="gaussian">جاوسي</button>
+                        </div>
+                    </div>
 
-                <div class="control-grid">
                     <div class="control-group">
                         <label for="epsilonRange">ε</label>
                         <input id="epsilonRange" type="range" min="0.20" max="2.00" step="0.01" value="0.60">
@@ -305,23 +319,21 @@ canvas {
 
                 <div class="stats-grid">
                     <div class="stat-box">
-                        <strong>العرض</strong>
+                        <strong>التقريب</strong>
+                        <span id="modeValue">مستطيل</span>
+                    </div>
+                    <div class="stat-box">
+                        <strong id="widthLabel">العرض</strong>
                         <span id="widthValue">0.600</span>
                     </div>
                     <div class="stat-box">
-                        <strong>الارتفاع</strong>
+                        <strong>قيمة القمة</strong>
                         <span id="heightValue">1.667</span>
                     </div>
                     <div class="stat-box">
                         <strong>المساحة</strong>
                         <span id="areaValue">1.000</span>
                     </div>
-                </div>
-
-                <div class="formula-box">
-                    <code>width = ε
-height = 1 / ε
-area = ε × (1 / ε) = 1</code>
                 </div>
             </article>
         </section>
@@ -330,10 +342,15 @@ area = ε × (1 / ε) = 1</code>
     <script>
         const epsilonRange = document.getElementById("epsilonRange");
         const epsilonValue = document.getElementById("epsilonValue");
+        const widthLabel = document.getElementById("widthLabel");
         const widthValue = document.getElementById("widthValue");
         const heightValue = document.getElementById("heightValue");
         const areaValue = document.getElementById("areaValue");
+        const modeValue = document.getElementById("modeValue");
         const deltaCanvas = document.getElementById("deltaCanvas");
+        const modeButtons = Array.from(document.querySelectorAll(".mode-button"));
+
+        let currentMode = "rectangle";
 
         function drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY, color = "#b9c9d8") {
             const plotWidth = width - margin.left - margin.right;
@@ -358,51 +375,26 @@ area = ε × (1 / ε) = 1</code>
             };
         }
 
-        function writeLabel(ctx, text, x, y, align = "start", color = "#42627e") {
+        function writeLabel(ctx, text, x, y, align = "start", color = "#42627e", size = 15) {
             ctx.fillStyle = color;
             ctx.textAlign = align;
-            ctx.font = "600 15px Cairo";
+            ctx.font = `600 ${size}px Cairo`;
             ctx.fillText(text, x, y);
         }
 
-        function drawDeltaRect() {
-            const ctx = deltaCanvas.getContext("2d");
-            const width = deltaCanvas.width;
-            const height = deltaCanvas.height;
-            const epsilon = parseFloat(epsilonRange.value);
-            const rectHeight = 1 / epsilon;
-            const area = epsilon * rectHeight;
+        function drawRectangle(ctx, axes, epsilon, baselineY, width, margin) {
+            const peak = 1 / epsilon;
             const halfWidth = epsilon / 2;
-            const margin = { top: 28, right: 26, bottom: 56, left: 56 };
-            const minX = -4;
-            const maxX = 4;
-            const minY = -0.35;
-            const maxY = Math.max(rectHeight * 1.35, 2.1);
-
-            epsilonValue.textContent = epsilon.toFixed(2);
-            widthValue.textContent = epsilon.toFixed(3);
-            heightValue.textContent = rectHeight.toFixed(3);
-            areaValue.textContent = area.toFixed(3);
-
-            ctx.clearRect(0, 0, width, height);
-            ctx.fillStyle = "#f6fbff";
-            ctx.fillRect(0, 0, width, height);
-
-            const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
-            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 8, "start");
-            writeLabel(ctx, "δ_ε(x)", margin.left + 4, margin.top - 6, "start");
-
             const left = axes.toCanvasX(-halfWidth);
             const right = axes.toCanvasX(halfWidth);
-            const top = axes.toCanvasY(rectHeight);
-            const base = axes.toCanvasY(0);
+            const top = axes.toCanvasY(peak);
 
-            ctx.fillStyle = "rgba(240, 179, 90, 0.25)";
-            ctx.fillRect(left, top, right - left, base - top);
+            ctx.fillStyle = "rgba(240, 179, 90, 0.28)";
+            ctx.fillRect(left, top, right - left, baselineY - top);
 
             ctx.strokeStyle = "#d78921";
             ctx.lineWidth = 3;
-            ctx.strokeRect(left, top, right - left, base - top);
+            ctx.strokeRect(left, top, right - left, baselineY - top);
 
             ctx.strokeStyle = "#42627e";
             ctx.lineWidth = 2;
@@ -421,11 +413,118 @@ area = ε × (1 / ε) = 1</code>
 
             writeLabel(ctx, "ε", (left + right) / 2, measureY - 12, "center", "#10263b");
             writeLabel(ctx, "1 / ε", (left + right) / 2, top - 12, "center", "#10263b");
-            writeLabel(ctx, "ε × (1 / ε) = 1", width - margin.right - 8, margin.top + 22, "end", "#5a7086");
+
+            modeValue.textContent = "مستطيل";
+            widthLabel.textContent = "العرض";
+            widthValue.textContent = epsilon.toFixed(3);
+            heightValue.textContent = peak.toFixed(3);
+            areaValue.textContent = "1.000";
         }
 
-        epsilonRange.addEventListener("input", drawDeltaRect);
-        drawDeltaRect();
+        function drawGaussian(ctx, axes, epsilon, baselineY, width, height, margin) {
+            const peak = 1 / (Math.sqrt(Math.PI) * epsilon);
+            const extent = 4;
+            const steps = 480;
+
+            ctx.beginPath();
+            for (let i = 0; i <= steps; i += 1) {
+                const x = -extent + (i / steps) * extent * 2;
+                const y = peak * Math.exp(-(x * x) / (epsilon * epsilon));
+                const px = axes.toCanvasX(x);
+                const py = axes.toCanvasY(y);
+                if (i === 0) {
+                    ctx.moveTo(px, baselineY);
+                    ctx.lineTo(px, py);
+                } else {
+                    ctx.lineTo(px, py);
+                }
+            }
+            ctx.lineTo(axes.toCanvasX(extent), baselineY);
+            ctx.closePath();
+            ctx.fillStyle = "rgba(92, 173, 255, 0.22)";
+            ctx.fill();
+
+            ctx.beginPath();
+            for (let i = 0; i <= steps; i += 1) {
+                const x = -extent + (i / steps) * extent * 2;
+                const y = peak * Math.exp(-(x * x) / (epsilon * epsilon));
+                const px = axes.toCanvasX(x);
+                const py = axes.toCanvasY(y);
+                if (i === 0) ctx.moveTo(px, py);
+                else ctx.lineTo(px, py);
+            }
+            ctx.strokeStyle = "#2f7dc2";
+            ctx.lineWidth = 3;
+            ctx.stroke();
+
+            const left = axes.toCanvasX(-epsilon / 2);
+            const right = axes.toCanvasX(epsilon / 2);
+            const measureY = axes.toCanvasY(-0.18);
+            ctx.strokeStyle = "#42627e";
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(left, measureY);
+            ctx.lineTo(right, measureY);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(left, measureY - 8);
+            ctx.lineTo(left, measureY + 8);
+            ctx.moveTo(right, measureY - 8);
+            ctx.lineTo(right, measureY + 8);
+            ctx.stroke();
+
+            writeLabel(ctx, "~ ε", (left + right) / 2, measureY - 12, "center", "#10263b");
+            writeLabel(ctx, "1 / (√π ε)", axes.toCanvasX(0), axes.toCanvasY(peak) - 12, "center", "#10263b");
+
+            modeValue.textContent = "جاوسي";
+            widthLabel.textContent = "العرض المميز";
+            widthValue.textContent = `~ ${epsilon.toFixed(3)}`;
+            heightValue.textContent = peak.toFixed(3);
+            areaValue.textContent = "1.000";
+        }
+
+        function redraw() {
+            const ctx = deltaCanvas.getContext("2d");
+            const width = deltaCanvas.width;
+            const height = deltaCanvas.height;
+            const epsilon = parseFloat(epsilonRange.value);
+            const rectanglePeak = 1 / epsilon;
+            const gaussianPeak = 1 / (Math.sqrt(Math.PI) * epsilon);
+            const maxPeak = Math.max(rectanglePeak, gaussianPeak);
+            const margin = { top: 28, right: 26, bottom: 56, left: 56 };
+            const minX = -4;
+            const maxX = 4;
+            const minY = -0.35;
+            const maxY = Math.max(maxPeak * 1.4, 2.1);
+
+            epsilonValue.textContent = epsilon.toFixed(2);
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "#f6fbff";
+            ctx.fillRect(0, 0, width, height);
+
+            const axes = drawAxes(ctx, width, height, margin, minX, maxX, minY, maxY);
+            const baselineY = axes.toCanvasY(0);
+
+            writeLabel(ctx, "x", width - margin.right + 2, height - margin.bottom + 8, "start");
+            writeLabel(ctx, "δ_ε(x)", margin.left + 4, margin.top - 6, "start");
+
+            if (currentMode === "rectangle") {
+                drawRectangle(ctx, axes, epsilon, baselineY, width, margin);
+            } else {
+                drawGaussian(ctx, axes, epsilon, baselineY, width, height, margin);
+            }
+        }
+
+        modeButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                currentMode = button.dataset.mode;
+                modeButtons.forEach((item) => item.classList.toggle("active", item === button));
+                redraw();
+            });
+        });
+
+        epsilonRange.addEventListener("input", redraw);
+        redraw();
     </script>
 </body>
 </html>
