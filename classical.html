@@ -550,6 +550,33 @@ a {
     grid-template-columns: minmax(0, 1fr);
 }
 
+.sim-layout {
+    display: grid;
+    direction: ltr;
+    grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.sim-layout > * {
+    direction: rtl;
+}
+
+.sim-panel {
+    display: grid;
+    gap: 18px;
+}
+
+.sim-panel .control-grid,
+.sim-panel .button-row,
+.sim-panel .results {
+    margin: 0;
+}
+
+.sim-layout .canvas-grid {
+    margin: 0;
+}
+
 canvas {
     width: 100%;
     max-width: 100%;
@@ -638,6 +665,10 @@ canvas {
     .hero,
     .menu-grid,
     .canvas-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .sim-layout {
         grid-template-columns: 1fr;
     }
 }
@@ -744,39 +775,43 @@ canvas {
                     <div class="badge">Fx = F cos &#x3B8; | Fy = F sin &#x3B8;</div>
                 </div>
 
-                <div class="control-grid">
-                    <div class="control-group">
-                        <label for="f1_mag">&#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; F1</label>
-                        <input type="range" id="f1_mag" min="0" max="20" step="0.5" value="10">
-                        <div class="value-display" id="f1_val">10.0 &#x646;&#x64A;&#x648;&#x62A;&#x646;</div>
-
-                        <label for="f1_ang" style="margin-top: 14px;">&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; &#x3B8;1</label>
-                        <input type="range" id="f1_ang" min="0" max="360" step="1" value="30">
-                        <div class="value-display" id="f1_ang_val">30&#xB0;</div>
+                <div class="sim-layout">
+                    <div class="canvas-grid canvas-grid--single">
+                        <canvas id="vectorCanvas" width="720" height="360"></canvas>
                     </div>
 
-                    <div class="control-group">
-                        <label for="f2_mag">&#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; F2</label>
-                        <input type="range" id="f2_mag" min="0" max="20" step="0.5" value="8">
-                        <div class="value-display" id="f2_val">8.0 &#x646;&#x64A;&#x648;&#x62A;&#x646;</div>
+                    <div class="sim-panel">
+                        <div class="control-grid">
+                            <div class="control-group">
+                                <label for="f1_mag">&#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; F1</label>
+                                <input type="range" id="f1_mag" min="0" max="20" step="0.5" value="10">
+                                <div class="value-display" id="f1_val">10.0 &#x646;&#x64A;&#x648;&#x62A;&#x646;</div>
 
-                        <label for="f2_ang" style="margin-top: 14px;">&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; &#x3B8;2</label>
-                        <input type="range" id="f2_ang" min="0" max="360" step="1" value="120">
-                        <div class="value-display" id="f2_ang_val">120&#xB0;</div>
+                                <label for="f1_ang" style="margin-top: 14px;">&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; &#x3B8;1</label>
+                                <input type="range" id="f1_ang" min="0" max="360" step="1" value="30">
+                                <div class="value-display" id="f1_ang_val">30&#xB0;</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="f2_mag">&#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; F2</label>
+                                <input type="range" id="f2_mag" min="0" max="20" step="0.5" value="8">
+                                <div class="value-display" id="f2_val">8.0 &#x646;&#x64A;&#x648;&#x62A;&#x646;</div>
+
+                                <label for="f2_ang" style="margin-top: 14px;">&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; &#x3B8;2</label>
+                                <input type="range" id="f2_ang" min="0" max="360" step="1" value="120">
+                                <div class="value-display" id="f2_ang_val">120&#xB0;</div>
+                            </div>
+                        </div>
+
+                        <div class="results">
+                            <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x623;&#x641;&#x642;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; Fx1</span><strong id="fx1">0.00</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x631;&#x623;&#x633;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; Fy1</span><strong id="fy1">0.00</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x623;&#x641;&#x642;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; Fx2</span><strong id="fx2">0.00</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x631;&#x623;&#x633;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; Fy2</span><strong id="fy2">0.00</strong></div>
+                            <div class="result-line"><span>&#x645;&#x642;&#x62F;&#x627;&#x631; &#x627;&#x644;&#x645;&#x62D;&#x635;&#x644;&#x629; R</span><strong id="r_mag">0.00</strong></div>
+                            <div class="result-line"><span>&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x62D;&#x635;&#x644;&#x629;</span><strong id="r_ang">0.00</strong></div>
+                        </div>
                     </div>
-                </div>
-
-                <div class="results">
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x623;&#x641;&#x642;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; Fx1</span><strong id="fx1">0.00</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x631;&#x623;&#x633;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; Fy1</span><strong id="fy1">0.00</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x623;&#x641;&#x642;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; Fx2</span><strong id="fx2">0.00</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x631;&#x643;&#x628;&#x629; &#x627;&#x644;&#x631;&#x623;&#x633;&#x64A;&#x629; &#x644;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; Fy2</span><strong id="fy2">0.00</strong></div>
-                    <div class="result-line"><span>&#x645;&#x642;&#x62F;&#x627;&#x631; &#x627;&#x644;&#x645;&#x62D;&#x635;&#x644;&#x629; R</span><strong id="r_mag">0.00</strong></div>
-                    <div class="result-line"><span>&#x632;&#x627;&#x648;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x62D;&#x635;&#x644;&#x629;</span><strong id="r_ang">0.00</strong></div>
-                </div>
-
-                <div class="canvas-grid canvas-grid--single">
-                    <canvas id="vectorCanvas" width="720" height="360"></canvas>
                 </div>
             </article>
 
@@ -788,50 +823,54 @@ canvas {
                     <div class="badge">x = ut + 1/2 at&#xB2; | v = u + at</div>
                 </div>
 
-                <div class="control-grid">
-                    <div class="control-group">
-                        <label for="motionObject">&#x627;&#x644;&#x62C;&#x633;&#x645; &#x627;&#x644;&#x645;&#x62A;&#x62D;&#x631;&#x643;</label>
-                        <select id="motionObject" class="control-select">
-                            <option value="car">&#x633;&#x64A;&#x627;&#x631;&#x629;</option>
-                            <option value="walker">&#x634;&#x62E;&#x635;</option>
-                        </select>
+                <div class="sim-layout">
+                    <div class="canvas-grid canvas-grid--single">
+                        <canvas id="motionCanvas" width="720" height="240"></canvas>
                     </div>
 
-                    <div class="control-group">
-                        <label for="initV">&#x627;&#x644;&#x633;&#x631;&#x639;&#x629; &#x627;&#x644;&#x627;&#x628;&#x62A;&#x62F;&#x627;&#x626;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; u</label>
-                        <input type="range" id="initV" min="-25" max="25" step="0.5" value="2">
-                        <div class="value-display" id="u_val">2.0 &#x645;/&#x62B;</div>
+                    <div class="sim-panel">
+                        <div class="control-grid">
+                            <div class="control-group">
+                                <label for="motionObject">&#x627;&#x644;&#x62C;&#x633;&#x645; &#x627;&#x644;&#x645;&#x62A;&#x62D;&#x631;&#x643;</label>
+                                <select id="motionObject" class="control-select">
+                                    <option value="car">&#x633;&#x64A;&#x627;&#x631;&#x629;</option>
+                                    <option value="walker">&#x634;&#x62E;&#x635;</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="initV">&#x627;&#x644;&#x633;&#x631;&#x639;&#x629; &#x627;&#x644;&#x627;&#x628;&#x62A;&#x62F;&#x627;&#x626;&#x64A;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; u</label>
+                                <input type="range" id="initV" min="-25" max="25" step="0.5" value="2">
+                                <div class="value-display" id="u_val">2.0 &#x645;/&#x62B;</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="accel">&#x627;&#x644;&#x639;&#x62C;&#x644;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; a</label>
+                                <input type="range" id="accel" min="-5" max="5" step="0.2" value="1">
+                                <div class="value-display" id="a_val">1.0 &#x645;/&#x62B;&#xB2;</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="motionTime">&#x627;&#x644;&#x632;&#x645;&#x646; &#x627;&#x644;&#x643;&#x644;&#x64A; T</label>
+                                <input type="range" id="motionTime" min="1" max="30" step="0.5" value="6">
+                                <div class="value-display" id="t_val">6.0 &#x62B;</div>
+                            </div>
+                        </div>
+
+                        <div class="button-row">
+                            <button type="button" class="sim-button" id="startMotion">&#x627;&#x628;&#x62F;&#x623; &#x627;&#x644;&#x62D;&#x631;&#x643;&#x629;</button>
+                            <button type="button" class="sim-button sim-button--secondary" id="resetMotion">&#x625;&#x639;&#x627;&#x62F;&#x629; &#x627;&#x644;&#x636;&#x628;&#x637;</button>
+                            <div class="motion-status" id="motionStatus">&#x62C;&#x627;&#x647;&#x632; &#x644;&#x644;&#x62A;&#x634;&#x63A;&#x64A;&#x644;</div>
+                        </div>
+
+                        <div class="results">
+                            <div class="result-line"><span>&#x627;&#x644;&#x632;&#x645;&#x646; &#x627;&#x644;&#x62D;&#x627;&#x644;&#x64A; t</span><strong id="sim_clock">0.00 &#x62B;</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x625;&#x632;&#x627;&#x62D;&#x629; x(t)</span><strong id="s_val">0.00 &#x645;</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x645;&#x633;&#x627;&#x641;&#x629; &#x627;&#x644;&#x645;&#x642;&#x637;&#x648;&#x639;&#x629; d(t)</span><strong id="distance_val">0.00 &#x645;</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x633;&#x631;&#x639;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; v(t)</span><strong id="v_val">0.00 &#x645;/&#x62B;</strong></div>
+                            <div class="result-line"><span>&#x627;&#x644;&#x62A;&#x62D;&#x642;&#x642; &#x645;&#x646; &#x627;&#x644;&#x639;&#x644;&#x627;&#x642;&#x629; v&#xB2; = u&#xB2; + 2ax</span><strong id="v2_check">0.00</strong></div>
+                        </div>
                     </div>
-
-                    <div class="control-group">
-                        <label for="accel">&#x627;&#x644;&#x639;&#x62C;&#x644;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; a</label>
-                        <input type="range" id="accel" min="-5" max="5" step="0.2" value="1">
-                        <div class="value-display" id="a_val">1.0 &#x645;/&#x62B;&#xB2;</div>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="motionTime">&#x627;&#x644;&#x632;&#x645;&#x646; &#x627;&#x644;&#x643;&#x644;&#x64A; T</label>
-                        <input type="range" id="motionTime" min="1" max="30" step="0.5" value="6">
-                        <div class="value-display" id="t_val">6.0 &#x62B;</div>
-                    </div>
-                </div>
-
-                <div class="button-row">
-                    <button type="button" class="sim-button" id="startMotion">&#x627;&#x628;&#x62F;&#x623; &#x627;&#x644;&#x62D;&#x631;&#x643;&#x629;</button>
-                    <button type="button" class="sim-button sim-button--secondary" id="resetMotion">&#x625;&#x639;&#x627;&#x62F;&#x629; &#x627;&#x644;&#x636;&#x628;&#x637;</button>
-                    <div class="motion-status" id="motionStatus">&#x62C;&#x627;&#x647;&#x632; &#x644;&#x644;&#x62A;&#x634;&#x63A;&#x64A;&#x644;</div>
-                </div>
-
-                <div class="results">
-                    <div class="result-line"><span>&#x627;&#x644;&#x632;&#x645;&#x646; &#x627;&#x644;&#x62D;&#x627;&#x644;&#x64A; t</span><strong id="sim_clock">0.00 &#x62B;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x625;&#x632;&#x627;&#x62D;&#x629; x(t)</span><strong id="s_val">0.00 &#x645;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x633;&#x627;&#x641;&#x629; &#x627;&#x644;&#x645;&#x642;&#x637;&#x648;&#x639;&#x629; d(t)</span><strong id="distance_val">0.00 &#x645;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x633;&#x631;&#x639;&#x629; &#x627;&#x644;&#x645;&#x62A;&#x62C;&#x647;&#x629; v(t)</span><strong id="v_val">0.00 &#x645;/&#x62B;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x62A;&#x62D;&#x642;&#x642; &#x645;&#x646; &#x627;&#x644;&#x639;&#x644;&#x627;&#x642;&#x629; v&#xB2; = u&#xB2; + 2ax</span><strong id="v2_check">0.00</strong></div>
-                </div>
-
-                <div class="canvas-grid canvas-grid--single">
-                    <canvas id="motionCanvas" width="720" height="240"></canvas>
                 </div>
             </article>
         </section>
