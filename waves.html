@@ -1,0 +1,791 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم الفيزياء | أساسيات الموجات</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-deep: #071824;
+    --bg-mid: #12304a;
+    --card: rgba(255, 255, 255, 0.94);
+    --ink: #10263b;
+    --muted: #5a7086;
+    --accent: #f0b35a;
+    --accent-strong: #d78921;
+    --shadow: 0 24px 60px rgba(3, 17, 31, 0.24);
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --line: rgba(16, 38, 59, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+    color: #ecf2f8;
+    background:
+        radial-gradient(circle at top right, rgba(240, 179, 90, 0.22), transparent 25%),
+        radial-gradient(circle at top left, rgba(92, 173, 255, 0.16), transparent 22%),
+        linear-gradient(145deg, var(--bg-deep) 0%, var(--bg-mid) 50%, #264563 100%);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page-shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 48px;
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    background: rgba(7, 24, 36, 0.42);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-badge {
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 10px;
+    object-fit: contain;
+}
+
+.logo-badge--hero {
+    width: 290px;
+    height: 150px;
+    max-width: 100%;
+    padding: 14px 18px;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    flex: 0 0 auto;
+    object-fit: contain;
+    filter: none;
+}
+
+.logo-badge--faculty,
+.logo-badge--university {
+    transform: none;
+}
+
+.brand-copy h1,
+.card h3 {
+    margin: 0;
+}
+
+.brand-copy h1 {
+    font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+}
+
+.site-header--welcome .brand-lockup {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.site-header--welcome .brand-copy {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+}
+
+
+.top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.top-nav a:hover {
+    transform: translateY(-2px);
+}
+
+.top-nav a[aria-current="page"] {
+    color: #11263b;
+    background: var(--accent);
+    border-color: transparent;
+}
+
+.hero {
+    margin-top: 18px;
+}
+
+.hero-panel,
+.card {
+    background: var(--card);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.hero-panel {
+    padding: 22px 26px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: auto -80px -80px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 179, 90, 0.35), transparent 70%);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--accent-strong);
+    background: rgba(240, 179, 90, 0.16);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.hero-panel h2 {
+    margin: 12px 0 0;
+    font-size: clamp(1.8rem, 3.6vw, 2.7rem);
+    line-height: 1.15;
+}
+
+.section-heading {
+    margin: 18px 0 12px;
+}
+
+.section-heading h3 {
+    margin: 0;
+    font-size: clamp(1.4rem, 2vw, 1.9rem);
+}
+
+.card {
+    padding: 22px;
+}
+
+.card-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.card-title h3 {
+    font-size: 1.35rem;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+    background: rgba(240, 179, 90, 0.16);
+    direction: ltr;
+}
+
+.sim-layout {
+    display: grid;
+    direction: ltr;
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.9fr);
+    gap: 14px;
+    align-items: start;
+}
+
+.sim-layout > * {
+    direction: rtl;
+}
+
+.plot-panel,
+.sim-panel {
+    display: grid;
+    gap: 10px;
+}
+
+.plot-wrap {
+    padding: 10px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, #121820 0%, #090d12 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+        inset 0 0 42px rgba(0, 0, 0, 0.45);
+}
+
+canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    background: #020508;
+}
+
+.control-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+}
+
+.control-group {
+    padding: 12px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.03);
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-strong);
+}
+
+.value-display {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.08);
+    font-weight: 700;
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    direction: ltr;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+}
+
+.sim-button {
+    min-height: 46px;
+    border: none;
+    border-radius: 999px;
+    padding: 0 22px;
+    background: var(--accent);
+    color: #11263b;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+}
+
+.sim-button:hover {
+    transform: translateY(-2px);
+}
+
+.sim-button--secondary {
+    background: rgba(16, 38, 59, 0.1);
+    color: var(--ink);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.stat-box {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    border: 1px solid rgba(16, 38, 59, 0.08);
+}
+
+.stat-box strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.stat-box span {
+    color: var(--muted);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    direction: ltr;
+    display: inline-block;
+}
+
+.footer-note {
+    margin-top: 22px;
+    text-align: center;
+    color: rgba(236, 242, 248, 0.64);
+    font-size: 0.95rem;
+}
+
+@media (max-width: 980px) {
+    .sim-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .page-shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+    }
+
+    .hero-panel,
+    .card {
+        border-radius: 22px;
+        padding: 22px;
+    }
+
+    .site-header {
+        padding: 18px;
+    }
+
+    .brand-lockup {
+        display: grid;
+        grid-template-columns: minmax(96px, 1fr) minmax(0, 1.2fr) minmax(96px, 1fr);
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .site-header--welcome .brand-lockup {
+        justify-content: stretch;
+    }
+
+    .brand-copy {
+        min-width: 0;
+        text-align: center;
+    }
+
+    .logo-badge {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+    }
+
+    .logo-badge--hero {
+        width: min(100%, 126px);
+        max-width: 126px;
+        height: 86px;
+        padding: 8px 10px;
+        justify-self: center;
+    }
+
+    .top-nav {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .top-nav a {
+        flex: 1 1 132px;
+        min-height: 42px;
+        padding: 0 14px;
+        font-size: 0.96rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-lockup {
+        grid-template-columns: minmax(84px, 1fr) minmax(0, 1.2fr) minmax(84px, 1fr);
+        gap: 10px;
+    }
+
+    .logo-badge--hero {
+        width: min(100%, 110px);
+        max-width: 110px;
+        height: 76px;
+        padding: 7px 8px;
+    }
+}
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="site-header site-header--welcome">
+            <div class="brand-lockup">
+                <img class="logo-badge logo-badge--hero logo-badge--faculty" src="./faculty-logo.png" alt="شعار الكلية">
+                <div class="brand-copy">
+                    <h1>أساسيات الموجات</h1>
+                </div>
+                <img class="logo-badge logo-badge--hero logo-badge--university" src="./university-logo.png" alt="شعار الجامعة">
+            </div>
+
+            <nav class="top-nav" aria-label="التنقل بين الصفحات">
+                <a href="./index.html">الرئيسية</a>
+                <a href="./classical.html">الميكانيكا الكلاسيكية</a>
+                <a href="./waves.html" aria-current="page">أساسيات الموجات</a>
+                <a href="./electricity.html">الكهربائية</a>
+                <a href="./quantum.html">ميكانيكا الكم</a>
+                <a href="./triangular.html">بئر جهد مثلثي</a>
+                <a href="./dirac-delta.html">أدوات رياضية في الفيزياء</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="hero-panel">
+                <h2>تمثيل موجة جيبية مستعرضة</h2>
+            </div>
+        </section>
+
+        <section>
+            <div class="card">
+                <div class="card-title">
+                    <span class="badge">y(x,t) = A sin(2&pi;(x/&lambda; - f t))</span>
+                </div>
+
+                <div class="sim-layout">
+                    <div class="plot-panel">
+                        <div class="plot-wrap">
+                            <canvas id="waveCanvas" width="760" height="320" aria-label="تمثيل بصري لموجة جيبية متحركة"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="sim-panel">
+                        <div class="control-grid">
+                            <div class="control-group">
+                                <label for="amplitude">السعة A</label>
+                                <input id="amplitude" type="range" min="0.5" max="4" step="0.1" value="2">
+                                <span class="value-display" id="amplitudeValue">2.0</span>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="wavelength">الطول الموجي λ</label>
+                                <input id="wavelength" type="range" min="2" max="12" step="0.2" value="6">
+                                <span class="value-display" id="wavelengthValue">6.0</span>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="frequency">التردد f</label>
+                                <input id="frequency" type="range" min="0.2" max="2.5" step="0.1" value="0.8">
+                                <span class="value-display" id="frequencyValue">0.8</span>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="timeSlider">الزمن t</label>
+                                <input id="timeSlider" type="range" min="0" max="4" step="0.05" value="0">
+                                <span class="value-display" id="timeValue">0.00 s</span>
+                            </div>
+                        </div>
+
+                        <div class="button-row">
+                            <button type="button" class="sim-button" id="playPauseButton">تشغيل الحركة</button>
+                            <button type="button" class="sim-button sim-button--secondary" id="resetButton">إعادة الضبط</button>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-box">
+                                <strong>السعة</strong>
+                                <span id="ampStat">2.00</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>الطول الموجي</strong>
+                                <span id="lambdaStat">6.00</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>التردد</strong>
+                                <span id="freqStat">0.80 Hz</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>الزمن الدوري</strong>
+                                <span id="periodStat">1.25 s</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>سرعة انتشار الموجة</strong>
+                                <span id="speedStat">4.80</span>
+                            </div>
+                            <div class="stat-box">
+                                <strong>الزمن الحالي</strong>
+                                <span id="timeStat">0.00 s</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        const canvas = document.getElementById("waveCanvas");
+        const ctx = canvas.getContext("2d");
+
+        const amplitudeInput = document.getElementById("amplitude");
+        const wavelengthInput = document.getElementById("wavelength");
+        const frequencyInput = document.getElementById("frequency");
+        const timeSlider = document.getElementById("timeSlider");
+        const playPauseButton = document.getElementById("playPauseButton");
+        const resetButton = document.getElementById("resetButton");
+
+        const amplitudeValue = document.getElementById("amplitudeValue");
+        const wavelengthValue = document.getElementById("wavelengthValue");
+        const frequencyValue = document.getElementById("frequencyValue");
+        const timeValue = document.getElementById("timeValue");
+
+        const ampStat = document.getElementById("ampStat");
+        const lambdaStat = document.getElementById("lambdaStat");
+        const freqStat = document.getElementById("freqStat");
+        const periodStat = document.getElementById("periodStat");
+        const speedStat = document.getElementById("speedStat");
+        const timeStat = document.getElementById("timeStat");
+
+        const state = {
+            playing: false,
+            time: 0,
+            lastFrame: performance.now()
+        };
+
+        function getWaveParams() {
+            const amplitude = parseFloat(amplitudeInput.value);
+            const wavelength = parseFloat(wavelengthInput.value);
+            const frequency = parseFloat(frequencyInput.value);
+            const period = 1 / frequency;
+            const speed = wavelength * frequency;
+            return { amplitude, wavelength, frequency, period, speed };
+        }
+
+        function updateTimeLimit() {
+            const { period } = getWaveParams();
+            const maxTime = Math.max(4, period * 3);
+            timeSlider.max = maxTime.toFixed(2);
+            if (state.time > maxTime) {
+                state.time = maxTime;
+                timeSlider.value = maxTime.toFixed(2);
+            }
+        }
+
+        function updateDisplays() {
+            const { amplitude, wavelength, frequency, period, speed } = getWaveParams();
+
+            amplitudeValue.textContent = amplitude.toFixed(1);
+            wavelengthValue.textContent = wavelength.toFixed(1);
+            frequencyValue.textContent = frequency.toFixed(1);
+            timeValue.textContent = `${state.time.toFixed(2)} s`;
+
+            ampStat.textContent = amplitude.toFixed(2);
+            lambdaStat.textContent = wavelength.toFixed(2);
+            freqStat.textContent = `${frequency.toFixed(2)} Hz`;
+            periodStat.textContent = `${period.toFixed(2)} s`;
+            speedStat.textContent = speed.toFixed(2);
+            timeStat.textContent = `${state.time.toFixed(2)} s`;
+        }
+
+        function waveY(worldX, time, params) {
+            return params.amplitude * Math.sin(2 * Math.PI * ((worldX / params.wavelength) - (params.frequency * time)));
+        }
+
+        function drawGrid(width, height, originX, plotEndX, centerY, xScale, yScale, xWorldMax) {
+            ctx.fillStyle = "#020508";
+            ctx.fillRect(0, 0, width, height);
+
+            const xMinorWorld = 1;
+            const xMajorWorld = 2;
+            const yMinorWorld = 1;
+            const yMajorWorld = 2;
+            const topPadding = 18;
+            const bottomPadding = 18;
+            const yVisibleMax = (Math.min(centerY - topPadding, height - centerY - bottomPadding)) / yScale;
+
+            ctx.lineWidth = 1;
+
+            for (let worldX = 0; worldX <= xWorldMax + 1e-6; worldX += xMinorWorld) {
+                const x = originX + (worldX * xScale);
+                const isMajor = Math.abs((worldX / xMajorWorld) - Math.round(worldX / xMajorWorld)) < 1e-6;
+                ctx.strokeStyle = isMajor ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.06)";
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+
+            for (let worldY = yMinorWorld; worldY <= yVisibleMax + 1e-6; worldY += yMinorWorld) {
+                const isMajor = Math.abs((worldY / yMajorWorld) - Math.round(worldY / yMajorWorld)) < 1e-6;
+                ctx.strokeStyle = isMajor ? "rgba(255, 255, 255, 0.12)" : "rgba(255, 255, 255, 0.06)";
+                const yUp = centerY - (worldY * yScale);
+                const yDown = centerY + (worldY * yScale);
+
+                ctx.beginPath();
+                ctx.moveTo(originX, yUp);
+                ctx.lineTo(plotEndX, yUp);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.moveTo(originX, yDown);
+                ctx.lineTo(plotEndX, yDown);
+                ctx.stroke();
+            }
+
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.42)";
+            ctx.lineWidth = 1.6;
+            ctx.beginPath();
+            ctx.moveTo(originX, height / 2);
+            ctx.lineTo(plotEndX, height / 2);
+            ctx.stroke();
+
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.7)";
+            ctx.lineWidth = 2.1;
+            ctx.beginPath();
+            ctx.moveTo(originX, 0);
+            ctx.lineTo(originX, height);
+            ctx.stroke();
+        }
+
+        function drawWave() {
+            const { width, height } = canvas;
+            const params = getWaveParams();
+            const xWorldMax = 24;
+            const horizontalPadding = 28;
+            const originX = horizontalPadding;
+            const plotEndX = width - horizontalPadding;
+            const centerY = height / 2;
+            const xScale = (width - (horizontalPadding * 2)) / xWorldMax;
+            const yScale = xScale;
+
+            ctx.clearRect(0, 0, width, height);
+            drawGrid(width, height, originX, plotEndX, centerY, xScale, yScale, xWorldMax);
+
+            ctx.save();
+            ctx.strokeStyle = "rgba(255, 74, 74, 0.28)";
+            ctx.lineWidth = 9;
+            ctx.shadowColor = "rgba(255, 64, 64, 0.7)";
+            ctx.shadowBlur = 18;
+            ctx.beginPath();
+            for (let px = originX; px <= plotEndX; px += 2) {
+                const worldX = (px - originX) / xScale;
+                const worldY = waveY(worldX, state.time, params);
+                const y = centerY - (worldY * yScale);
+                if (px === originX) {
+                    ctx.moveTo(px, y);
+                } else {
+                    ctx.lineTo(px, y);
+                }
+            }
+            ctx.stroke();
+            ctx.restore();
+
+            ctx.strokeStyle = "#ff5252";
+            ctx.lineWidth = 3.5;
+            ctx.beginPath();
+            for (let px = originX; px <= plotEndX; px += 2) {
+                const worldX = (px - originX) / xScale;
+                const worldY = waveY(worldX, state.time, params);
+                const y = centerY - (worldY * yScale);
+                if (px === originX) {
+                    ctx.moveTo(px, y);
+                } else {
+                    ctx.lineTo(px, y);
+                }
+            }
+            ctx.stroke();
+        }
+
+        function render() {
+            updateDisplays();
+            drawWave();
+        }
+
+        function animationLoop(now) {
+            const elapsed = (now - state.lastFrame) / 1000;
+            state.lastFrame = now;
+
+            if (state.playing) {
+                const maxTime = parseFloat(timeSlider.max);
+                state.time += elapsed;
+                if (state.time > maxTime) {
+                    state.time = 0;
+                }
+                timeSlider.value = state.time.toFixed(2);
+            }
+
+            render();
+            requestAnimationFrame(animationLoop);
+        }
+
+        amplitudeInput.addEventListener("input", render);
+        wavelengthInput.addEventListener("input", render);
+        frequencyInput.addEventListener("input", () => {
+            updateTimeLimit();
+            render();
+        });
+
+        timeSlider.addEventListener("input", () => {
+            state.time = parseFloat(timeSlider.value);
+            render();
+        });
+
+        playPauseButton.addEventListener("click", () => {
+            state.playing = !state.playing;
+            playPauseButton.textContent = state.playing ? "إيقاف الحركة" : "تشغيل الحركة";
+        });
+
+        resetButton.addEventListener("click", () => {
+            amplitudeInput.value = "2";
+            wavelengthInput.value = "6";
+            frequencyInput.value = "0.8";
+            state.time = 0;
+            state.playing = false;
+            playPauseButton.textContent = "تشغيل الحركة";
+            updateTimeLimit();
+            timeSlider.value = "0";
+            render();
+        });
+
+        updateTimeLimit();
+        render();
+        requestAnimationFrame(animationLoop);
+    </script>
+</body>
+</html>
+

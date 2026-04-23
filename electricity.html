@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -634,10 +634,171 @@ canvas {
     font-size: 0.95rem;
 }
 
+.model-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.model-tab {
+    min-height: 46px;
+    border: 1px solid rgba(16, 38, 59, 0.14);
+    border-radius: 999px;
+    padding: 0 18px;
+    background: rgba(16, 38, 59, 0.08);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.model-tab:hover {
+    transform: translateY(-2px);
+}
+
+.model-tab.active {
+    background: var(--accent);
+    color: #11263b;
+    border-color: transparent;
+}
+
+.model-panel {
+    display: none;
+}
+
+.model-panel.active {
+    display: block;
+}
+
+.physics-layout {
+    display: grid;
+    direction: ltr;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.95fr);
+    gap: 16px;
+    align-items: start;
+}
+
+.physics-layout > * {
+    direction: rtl;
+}
+
+.canvas-shell {
+    padding: 12px;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: linear-gradient(180deg, #121820 0%, #090d12 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.02),
+        inset 0 0 42px rgba(0, 0, 0, 0.45);
+}
+
+.canvas-shell canvas {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 18px;
+    background: #04070c;
+}
+
+.hand-reference-card {
+    margin-top: 12px;
+    padding: 14px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    border: 1px solid rgba(16, 38, 59, 0.08);
+}
+
+.hand-reference-title {
+    margin: 0 0 10px;
+    color: var(--ink);
+    font-size: 1rem;
+    font-weight: 800;
+}
+
+.hand-reference-card svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 16px;
+    background: linear-gradient(180deg, rgba(16, 38, 59, 0.03), rgba(16, 38, 59, 0.01));
+}
+
+.hand-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.hand-legend span {
+    padding: 7px 12px;
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.08);
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.result-card {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    border: 1px solid rgba(16, 38, 59, 0.08);
+}
+
+.result-card strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.result-card span {
+    color: var(--muted);
+    display: inline-block;
+}
+
+.model-note {
+    margin-top: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    border: 1px solid rgba(16, 38, 59, 0.08);
+    color: var(--muted);
+    line-height: 1.8;
+}
+
+.metric-value {
+    direction: ltr;
+    font-family: "Cascadia Mono", "Consolas", monospace;
+}
+
+.select-control {
+    width: 100%;
+    min-height: 46px;
+    border: 1px solid rgba(16, 38, 59, 0.14);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--ink);
+    font: inherit;
+    padding: 0 14px;
+}
+
 @media (max-width: 980px) {
     .hero,
     .menu-grid,
-    .canvas-grid {
+    .canvas-grid,
+    .physics-layout {
         grid-template-columns: 1fr;
     }
 }
@@ -710,6 +871,10 @@ canvas {
     .placeholder-card {
         padding: 22px;
     }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 
@@ -728,6 +893,7 @@ canvas {
             <nav class="top-nav" aria-label="&#x631;&#x648;&#x627;&#x628;&#x637; &#x627;&#x644;&#x635;&#x641;&#x62D;&#x627;&#x62A;">
                 <a href="./index.html">&#x627;&#x644;&#x631;&#x626;&#x64A;&#x633;&#x64A;&#x629;</a>
                 <a href="./classical.html">&#x627;&#x644;&#x645;&#x64A;&#x643;&#x627;&#x646;&#x64A;&#x643;&#x627; &#x627;&#x644;&#x643;&#x644;&#x627;&#x633;&#x64A;&#x643;&#x64A;&#x629;</a>
+                <a href="./waves.html">&#x623;&#x633;&#x627;&#x633;&#x64A;&#x627;&#x62A; &#x627;&#x644;&#x645;&#x648;&#x62C;&#x627;&#x62A;</a>
                 <a href="./electricity.html" aria-current="page">&#x627;&#x644;&#x643;&#x647;&#x631;&#x628;&#x627;&#x626;&#x64A;&#x629;</a>
                 <a href="./quantum.html">&#x645;&#x64A;&#x643;&#x627;&#x646;&#x64A;&#x643;&#x627; &#x627;&#x644;&#x643;&#x645;</a>
                 <a href="./triangular.html">&#x628;&#x626;&#x631; &#x62C;&#x647;&#x62F; &#x645;&#x62B;&#x644;&#x62B;&#x64A;</a>
@@ -737,446 +903,284 @@ canvas {
 
         <section class="content-grid">
             <article class="card">
-                <div class="card-title">
-                    <div>
-                        <h3>&#x642;&#x627;&#x646;&#x648;&#x646; &#x643;&#x648;&#x644;&#x648;&#x645; &#x645;&#x639; &#x645;&#x62D;&#x627;&#x643;&#x627;&#x629; &#x627;&#x644;&#x62D;&#x631;&#x643;&#x629;</h3>
-                    </div>
-                    <div class="badge">F = k |q1 q2| / r&#xB2;</div>
-                </div>
-
-                <div class="control-grid">
-                    <div class="control-group">
-                        <label for="charge1">&#x627;&#x644;&#x634;&#x62D;&#x646;&#x629; &#x627;&#x644;&#x623;&#x648;&#x644;&#x649; q1</label>
-                        <input type="range" id="charge1" min="-10" max="10" step="0.5" value="4">
-                        <div class="value-display" id="charge1Val">+4.0 &#x645;&#x64A;&#x643;&#x631;&#x648;&#x643;&#x648;&#x644;&#x648;&#x645;</div>
+                    <div class="card-title">
+                        <div>
+                            <h3>قانون كولوم</h3>
+                            <p>غيّري قيم الشحنتين والمسافة، ثم راقبي نوع التفاعل ومقدار القوة الكهربائية والتمثيل البصري المباشر.</p>
+                        </div>
                     </div>
 
-                    <div class="control-group">
-                        <label for="charge2">&#x627;&#x644;&#x634;&#x62D;&#x646;&#x629; &#x627;&#x644;&#x62B;&#x627;&#x646;&#x64A;&#x629; q2</label>
-                        <input type="range" id="charge2" min="-10" max="10" step="0.5" value="-3">
-                        <div class="value-display" id="charge2Val">-3.0 &#x645;&#x64A;&#x643;&#x631;&#x648;&#x643;&#x648;&#x644;&#x648;&#x645;</div>
+                <section class="model-panel active" id="coulombPanel">
+                    <div class="card-title">
+                        <h3>قانون كولوم</h3>
+                        <span class="badge">F = k |q1 q2| / r<sup>2</sup></span>
                     </div>
 
-                    <div class="control-group">
-                        <label for="distance">&#x627;&#x644;&#x645;&#x633;&#x627;&#x641;&#x629; &#x627;&#x644;&#x627;&#x628;&#x62A;&#x62F;&#x627;&#x626;&#x64A;&#x629; r</label>
-                        <input type="range" id="distance" min="0.2" max="3" step="0.05" value="1.2">
-                        <div class="value-display" id="distanceVal">1.20 &#x645;&#x62A;&#x631;</div>
+                    <div class="physics-layout">
+                        <div class="visual-panel">
+                            <div class="canvas-shell">
+                                <canvas id="coulombCanvas" width="720" height="360" aria-label="تمثيل بصري لقانون كولوم"></canvas>
+                            </div>
+                        </div>
+
+                        <div class="control-panel">
+                            <div class="control-grid">
+                                <div class="control-group">
+                                    <label for="coulombQ1">الشحنة الأولى q1</label>
+                                    <input id="coulombQ1" type="range" min="-10" max="10" step="0.5" value="4">
+                                    <div class="value-display" id="coulombQ1Val">+4.0 μC</div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="coulombQ2">الشحنة الثانية q2</label>
+                                    <input id="coulombQ2" type="range" min="-10" max="10" step="0.5" value="-3">
+                                    <div class="value-display" id="coulombQ2Val">-3.0 μC</div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label for="coulombDistance">المسافة بين الشحنتين r</label>
+                                    <input id="coulombDistance" type="range" min="1" max="100" step="1" value="20">
+                                    <div class="value-display" id="coulombDistanceVal">20 cm</div>
+                                </div>
+                            </div>
+
+                            <div class="result-grid">
+                                <div class="result-card">
+                                    <strong>القوة الكهربائية</strong>
+                                    <span class="metric-value" id="coulombForceVal">2.697 N</span>
+                                </div>
+                                <div class="result-card">
+                                    <strong>نوع التفاعل</strong>
+                                    <span id="coulombTypeVal">تجاذب</span>
+                                </div>
+                                <div class="result-card">
+                                    <strong>المسافة المعتمدة</strong>
+                                    <span class="metric-value" id="coulombDistanceNowVal">0.200 m</span>
+                                </div>
+                            </div>
+                            <div class="model-note" id="coulombExplain">عند اختلاف إشارة الشحنتين يظهر التجاذب، وعند تماثل الإشارة يظهر التنافر، بينما تتناقص القوة بسرعة عند زيادة المسافة.</div>
+                        </div>
                     </div>
-
-                    <div class="control-group">
-                        <label for="simSpeed">&#x633;&#x631;&#x639;&#x629; &#x627;&#x644;&#x639;&#x631;&#x636;</label>
-                        <input type="range" id="simSpeed" min="0.5" max="4" step="0.1" value="1.6">
-                        <div class="value-display" id="simSpeedVal">1.6 &#xD7;</div>
-                    </div>
-                </div>
-
-                <div class="button-row">
-                    <button type="button" class="sim-button" id="startElectricity">&#x627;&#x628;&#x62F;&#x623; &#x627;&#x644;&#x62A;&#x641;&#x627;&#x639;&#x644;</button>
-                    <button type="button" class="sim-button sim-button--secondary" id="resetElectricity">&#x625;&#x639;&#x627;&#x62F;&#x629; &#x627;&#x644;&#x636;&#x628;&#x637;</button>
-                    <div class="motion-status" id="electricStatus">&#x62C;&#x627;&#x647;&#x632; &#x644;&#x644;&#x645;&#x62D;&#x627;&#x643;&#x627;&#x629;</div>
-                </div>
-
-                <div class="results">
-                    <div class="result-line"><span>&#x645;&#x642;&#x62F;&#x627;&#x631; &#x627;&#x644;&#x642;&#x648;&#x629; &#x627;&#x644;&#x643;&#x647;&#x631;&#x628;&#x627;&#x626;&#x64A;&#x629; &#x627;&#x644;&#x62D;&#x627;&#x644;&#x64A;</span><strong id="forceVal">0.0000 N</strong></div>
-                    <div class="result-line"><span>&#x646;&#x648;&#x639; &#x627;&#x644;&#x62A;&#x641;&#x627;&#x639;&#x644;</span><strong id="interactionVal">&#x62A;&#x62C;&#x627;&#x630;&#x628;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x645;&#x633;&#x627;&#x641;&#x629; &#x627;&#x644;&#x62D;&#x627;&#x644;&#x64A;&#x629; &#x628;&#x64A;&#x646; &#x627;&#x644;&#x634;&#x62D;&#x646;&#x62A;&#x64A;&#x646;</span><strong id="distanceNowVal">1.20 &#x645;&#x62A;&#x631;</strong></div>
-                    <div class="result-line"><span>&#x632;&#x645;&#x646; &#x627;&#x644;&#x645;&#x62D;&#x627;&#x643;&#x627;&#x629;</span><strong id="simTimeVal">0.00 &#x62B;</strong></div>
-                    <div class="result-line"><span>&#x627;&#x644;&#x637;&#x627;&#x642;&#x629; &#x627;&#x644;&#x643;&#x627;&#x645;&#x646;&#x629; &#x627;&#x644;&#x643;&#x647;&#x631;&#x628;&#x627;&#x626;&#x64A;&#x629;</span><strong id="potentialVal">0.0000 J</strong></div>
-                    <div class="result-line"><span>&#x645;&#x644;&#x627;&#x62D;&#x638;&#x629; &#x641;&#x64A;&#x632;&#x64A;&#x627;&#x626;&#x64A;&#x629;</span><strong id="lawVal">&#x627;&#x644;&#x642;&#x648;&#x62A;&#x627;&#x646; &#x645;&#x62A;&#x633;&#x627;&#x648;&#x64A;&#x62A;&#x627;&#x646; &#x645;&#x642;&#x62F;&#x627;&#x631;&#x64B;&#x627; &#x648;&#x645;&#x62A;&#x639;&#x627;&#x643;&#x633;&#x62A;&#x627;&#x646; &#x627;&#x62A;&#x62C;&#x627;&#x647;&#x64B;&#x627;</strong></div>
-                </div>
-
-                <div class="canvas-grid canvas-grid--single">
-                    <canvas id="electricCanvas" width="720" height="360"></canvas>
-                </div>
+                </section>
             </article>
         </section>
     </main>
 
-    <script>
+        <script>
+/* Electricity section: Coulomb model */
+(() => {
+    const COULOMB_K = 8.99e9;
+    const DARK_BG = "#05090f";
+    const GRID_MINOR = "rgba(255,255,255,0.06)";
+    const GRID_MAJOR = "rgba(255,255,255,0.12)";
+    const AXIS_COLOR = "rgba(255,255,255,0.42)";
 
-const charge1Slider = document.getElementById("charge1");
-const charge2Slider = document.getElementById("charge2");
-const distanceSlider = document.getElementById("distance");
-const simSpeedSlider = document.getElementById("simSpeed");
-
-const charge1Val = document.getElementById("charge1Val");
-const charge2Val = document.getElementById("charge2Val");
-const distanceVal = document.getElementById("distanceVal");
-const simSpeedVal = document.getElementById("simSpeedVal");
-
-const forceVal = document.getElementById("forceVal");
-const interactionVal = document.getElementById("interactionVal");
-const distanceNowVal = document.getElementById("distanceNowVal");
-const simTimeVal = document.getElementById("simTimeVal");
-const potentialVal = document.getElementById("potentialVal");
-const lawVal = document.getElementById("lawVal");
-
-const startElectricityButton = document.getElementById("startElectricity");
-const resetElectricityButton = document.getElementById("resetElectricity");
-const electricStatus = document.getElementById("electricStatus");
-
-const electricCanvas = document.getElementById("electricCanvas");
-const electricCtx = electricCanvas ? electricCanvas.getContext("2d") : null;
-
-const K_COULOMB = 8.99e9;
-const MIN_SEPARATION = 0.18;
-const MAX_SEPARATION = 4.5;
-const MAX_SIM_TIME = 10;
-const MASS_1 = 0.18;
-const MASS_2 = 0.18;
-
-let electricityFrame = null;
-let electricityRunning = false;
-let electricityState = null;
-let lastTimestamp = 0;
-
-function formatSignedCharge(value) {
-    const sign = value > 0 ? "+" : "";
-    return `${sign}${value.toFixed(1)} \u0645\u064A\u0643\u0631\u0648\u0643\u0648\u0644\u0648\u0645`;
-}
-
-function formatNumber(value, digits = 4) {
-    if (Math.abs(value) >= 1000 || (Math.abs(value) > 0 && Math.abs(value) < 0.001)) {
-        return value.toExponential(3);
-    }
-
-    return value.toFixed(digits);
-}
-
-function getCurrentInputs() {
-    return {
-        q1Micro: parseFloat(charge1Slider.value),
-        q2Micro: parseFloat(charge2Slider.value),
-        q1: parseFloat(charge1Slider.value) * 1e-6,
-        q2: parseFloat(charge2Slider.value) * 1e-6,
-        distance: parseFloat(distanceSlider.value),
-        speedScale: parseFloat(simSpeedSlider.value)
+    const coulombModel = {
+        q1: document.getElementById("coulombQ1"),
+        q2: document.getElementById("coulombQ2"),
+        distance: document.getElementById("coulombDistance"),
+        q1Val: document.getElementById("coulombQ1Val"),
+        q2Val: document.getElementById("coulombQ2Val"),
+        distanceVal: document.getElementById("coulombDistanceVal"),
+        forceVal: document.getElementById("coulombForceVal"),
+        typeVal: document.getElementById("coulombTypeVal"),
+        distanceNowVal: document.getElementById("coulombDistanceNowVal"),
+        explain: document.getElementById("coulombExplain"),
+        canvas: document.getElementById("coulombCanvas")
     };
-}
 
-function getInteractionText(q1, q2) {
-    if (q1 === 0 || q2 === 0) {
-        return "\u0644\u0627 \u062A\u0648\u062C\u062F \u0642\u0648\u0629";
-    }
-
-    return q1 * q2 > 0 ? "\u062A\u0646\u0627\u0641\u0631" : "\u062A\u062C\u0627\u0630\u0628";
-}
-
-function getForceOnCharge1(q1, q2, x1, x2) {
-    const dx = x2 - x1;
-    const r = Math.max(Math.abs(dx), MIN_SEPARATION);
-    return -K_COULOMB * q1 * q2 * dx / (r * r * r);
-}
-
-function createInitialState() {
-    const inputs = getCurrentInputs();
-    return {
-        q1: inputs.q1,
-        q2: inputs.q2,
-        q1Micro: inputs.q1Micro,
-        q2Micro: inputs.q2Micro,
-        x1: -inputs.distance / 2,
-        x2: inputs.distance / 2,
-        v1: 0,
-        v2: 0,
-        t: 0,
-        initialDistance: inputs.distance,
-        speedScale: inputs.speedScale
-    };
-}
-
-function drawArrow(fromX, fromY, toX, color) {
-    electricCtx.beginPath();
-    electricCtx.moveTo(fromX, fromY);
-    electricCtx.lineTo(toX, fromY);
-    electricCtx.strokeStyle = color;
-    electricCtx.lineWidth = 4;
-    electricCtx.stroke();
-
-    const angle = toX >= fromX ? 0 : Math.PI;
-    const headLength = 12;
-
-    electricCtx.beginPath();
-    electricCtx.moveTo(toX, fromY);
-    electricCtx.lineTo(
-        toX - headLength * Math.cos(angle - Math.PI / 6),
-        fromY - headLength * Math.sin(angle - Math.PI / 6)
-    );
-    electricCtx.lineTo(
-        toX - headLength * Math.cos(angle + Math.PI / 6),
-        fromY - headLength * Math.sin(angle + Math.PI / 6)
-    );
-    electricCtx.closePath();
-    electricCtx.fillStyle = color;
-    electricCtx.fill();
-}
-
-function drawCharge(x, y, radius, value, label) {
-    const positive = value >= 0;
-    const fill = positive ? "#f4b65f" : "#7cc3ff";
-    const accent = positive ? "#7a4310" : "#163b63";
-
-    electricCtx.beginPath();
-    electricCtx.arc(x, y, radius, 0, Math.PI * 2);
-    electricCtx.fillStyle = fill;
-    electricCtx.fill();
-
-    electricCtx.lineWidth = 3;
-    electricCtx.strokeStyle = "rgba(255,255,255,0.9)";
-    electricCtx.stroke();
-
-    electricCtx.fillStyle = accent;
-    electricCtx.font = "800 30px Cairo";
-    electricCtx.textAlign = "center";
-    electricCtx.textBaseline = "middle";
-    electricCtx.fillText(positive ? "+" : "-", x, y + 2);
-
-    electricCtx.fillStyle = "rgba(255,255,255,0.88)";
-    electricCtx.font = "700 16px Cairo";
-    electricCtx.fillText(label, x, y - radius - 22);
-    electricCtx.fillText(formatSignedCharge(value), x, y + radius + 24);
-}
-
-function renderElectricity(state) {
-    if (!electricCanvas || !electricCtx || !state) {
+    if (!coulombModel.canvas) {
         return;
     }
 
-    const distanceNow = Math.abs(state.x2 - state.x1);
-    const forceMagnitude = state.q1 === 0 || state.q2 === 0
-        ? 0
-        : K_COULOMB * Math.abs(state.q1 * state.q2) / (distanceNow * distanceNow);
-    const potentialEnergy = state.q1 === 0 || state.q2 === 0
-        ? 0
-        : K_COULOMB * state.q1 * state.q2 / distanceNow;
-    const interactionText = getInteractionText(state.q1, state.q2);
+    function formatSignedMicro(value) {
+        const sign = value > 0 ? "+" : "";
+        return `${sign}${value.toFixed(1)} μC`;
+    }
 
-    charge1Val.textContent = formatSignedCharge(state.q1Micro);
-    charge2Val.textContent = formatSignedCharge(state.q2Micro);
-    distanceVal.textContent = `${state.initialDistance.toFixed(2)} \u0645\u062A\u0631`;
-    simSpeedVal.textContent = `${state.speedScale.toFixed(1)} \u00D7`;
-    forceVal.textContent = `${formatNumber(forceMagnitude)} N`;
-    interactionVal.textContent = interactionText;
-    distanceNowVal.textContent = `${distanceNow.toFixed(2)} \u0645\u062A\u0631`;
-    simTimeVal.textContent = `${state.t.toFixed(2)} \u062B`;
-    potentialVal.textContent = `${formatNumber(potentialEnergy)} J`;
-    lawVal.textContent = state.q1 === 0 || state.q2 === 0
-        ? "\u0625\u062D\u062F\u0649 \u0627\u0644\u0634\u062D\u0646\u062A\u064A\u0646 \u062A\u0633\u0627\u0648\u064A \u0635\u0641\u0631\u064B\u0627\u060C \u0644\u0630\u0644\u0643 \u062A\u0646\u0639\u062F\u0645 \u0627\u0644\u0642\u0648\u0629 \u0627\u0644\u0645\u062A\u0628\u0627\u062F\u0644\u0629"
-        : "\u0627\u0644\u0642\u0648\u062A\u0627\u0646 \u0645\u062A\u0633\u0627\u0648\u064A\u062A\u0627\u0646 \u0645\u0642\u062F\u0627\u0631\u064B\u0627 \u0648\u0645\u062A\u0639\u0627\u0643\u0633\u062A\u0627\u0646 \u0627\u062A\u062C\u0627\u0647\u064B\u0627";
+    function formatScaledUnit(value, unit) {
+        const absValue = Math.abs(value);
+        if (absValue === 0) {
+            return `0 ${unit}`;
+        }
+        if (absValue >= 1) {
+            return `${value.toFixed(3)} ${unit}`;
+        }
+        if (absValue >= 1e-3) {
+            return `${(value * 1e3).toFixed(3)} m${unit}`;
+        }
+        if (absValue >= 1e-6) {
+            return `${(value * 1e6).toFixed(2)} µ${unit}`;
+        }
+        if (absValue >= 1e-9) {
+            return `${(value * 1e9).toFixed(2)} n${unit}`;
+        }
+        return `${value.toExponential(2)} ${unit}`;
+    }
 
-    const width = electricCanvas.clientWidth || 720;
-    const height = 360;
-    electricCanvas.width = width;
-    electricCanvas.height = height;
+    function drawPanelBackground(ctx, width, height) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.fillStyle = DARK_BG;
+        ctx.fillRect(0, 0, width, height);
+    }
 
-    electricCtx.clearRect(0, 0, width, height);
+    function drawGrid(ctx, width, height, stepX = 48, stepY = 48) {
+        ctx.strokeStyle = GRID_MINOR;
+        ctx.lineWidth = 1;
 
-    const bg = electricCtx.createLinearGradient(0, 0, 0, height);
-    bg.addColorStop(0, "#11233b");
-    bg.addColorStop(1, "#1a3554");
-    electricCtx.fillStyle = bg;
-    electricCtx.fillRect(0, 0, width, height);
-
-    const centerY = height / 2 + 18;
-    const radius = 34;
-    const viewHalf = Math.max(2.4, distanceNow / 2 + 0.6, state.initialDistance / 2 + 0.5);
-    const usableWidth = width - 140;
-    const xToCanvas = (x) => 70 + ((x + viewHalf) / (2 * viewHalf)) * usableWidth;
-    const leftX = xToCanvas(state.x1);
-    const rightX = xToCanvas(state.x2);
-
-    electricCtx.strokeStyle = "rgba(255,255,255,0.24)";
-    electricCtx.lineWidth = 3;
-    electricCtx.beginPath();
-    electricCtx.moveTo(leftX + radius + 10, centerY);
-    electricCtx.lineTo(rightX - radius - 10, centerY);
-    electricCtx.stroke();
-
-    electricCtx.fillStyle = "rgba(255,255,255,0.82)";
-    electricCtx.font = "700 16px Cairo";
-    electricCtx.textAlign = "center";
-    electricCtx.fillText(`\u0627\u0644\u0645\u0633\u0627\u0641\u0629 \u0627\u0644\u062D\u0627\u0644\u064A\u0629 = ${distanceNow.toFixed(2)} m`, width / 2, centerY - 26);
-    electricCtx.fillText(interactionText, width / 2, 42);
-
-    drawCharge(leftX, centerY, radius, state.q1Micro, "q1");
-    drawCharge(rightX, centerY, radius, state.q2Micro, "q2");
-
-    if (state.q1 !== 0 && state.q2 !== 0) {
-        const arrowScale = Math.min(90, 30 + Math.log10(forceMagnitude + 1) * 24);
-        const repulsive = state.q1 * state.q2 > 0;
-
-        if (repulsive) {
-            drawArrow(leftX - 10, centerY - 84, leftX - arrowScale, "#ff8f5a");
-            drawArrow(rightX + 10, centerY - 84, rightX + arrowScale, "#7cc3ff");
-        } else {
-            drawArrow(leftX + 10, centerY - 84, leftX + arrowScale, "#ff8f5a");
-            drawArrow(rightX - 10, centerY - 84, rightX - arrowScale, "#7cc3ff");
+        for (let x = 0; x <= width; x += stepX / 2) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
         }
 
-        electricCtx.fillStyle = "rgba(255,255,255,0.85)";
-        electricCtx.font = "700 14px Cairo";
-        electricCtx.fillText("F \u0639\u0644\u0649 q1", leftX, centerY - 110);
-        electricCtx.fillText("F \u0639\u0644\u0649 q2", rightX, centerY - 110);
-    }
-
-    electricCtx.textAlign = "start";
-}
-
-function stopElectricityAnimation() {
-    if (electricityFrame) {
-        cancelAnimationFrame(electricityFrame);
-        electricityFrame = null;
-    }
-
-    electricityRunning = false;
-    lastTimestamp = 0;
-    startElectricityButton.disabled = false;
-}
-
-function finishElectricityAnimation(message) {
-    electricStatus.textContent = message;
-    stopElectricityAnimation();
-}
-
-function stepElectricity(dt) {
-    if (!electricityState) {
-        return;
-    }
-
-    const distanceNow = Math.abs(electricityState.x2 - electricityState.x1);
-    const interactionText = getInteractionText(electricityState.q1, electricityState.q2);
-
-    if (interactionText === "\u0644\u0627 \u062A\u0648\u062C\u062F \u0642\u0648\u0629") {
-        electricityState.t += dt;
-        if (electricityState.t >= MAX_SIM_TIME) {
-            finishElectricityAnimation("\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0645\u062D\u0627\u0643\u0627\u0629: \u0644\u0627 \u062A\u0648\u062C\u062F \u062D\u0631\u0643\u0629 \u0644\u0623\u0646 \u0625\u062D\u062F\u0649 \u0627\u0644\u0634\u062D\u0646\u062A\u064A\u0646 \u062A\u0633\u0627\u0648\u064A \u0635\u0641\u0631\u064B\u0627");
+        for (let y = 0; y <= height; y += stepY / 2) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
         }
-        return;
+
+        ctx.strokeStyle = GRID_MAJOR;
+        ctx.lineWidth = 1.2;
+
+        for (let x = 0; x <= width; x += stepX) {
+            ctx.beginPath();
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, height);
+            ctx.stroke();
+        }
+
+        for (let y = 0; y <= height; y += stepY) {
+            ctx.beginPath();
+            ctx.moveTo(0, y);
+            ctx.lineTo(width, y);
+            ctx.stroke();
+        }
     }
 
-    const forceOn1 = getForceOnCharge1(
-        electricityState.q1,
-        electricityState.q2,
-        electricityState.x1,
-        electricityState.x2
-    );
-    const forceOn2 = -forceOn1;
+    function drawArrow(ctx, x1, y1, x2, y2, color, width = 4) {
+        const angle = Math.atan2(y2 - y1, x2 - x1);
+        const head = 12;
 
-    const a1 = forceOn1 / MASS_1;
-    const a2 = forceOn2 / MASS_2;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = width;
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
 
-    electricityState.v1 += a1 * dt;
-    electricityState.v2 += a2 * dt;
-    electricityState.x1 += electricityState.v1 * dt;
-    electricityState.x2 += electricityState.v2 * dt;
-    electricityState.t += dt;
-
-    const newDistance = Math.abs(electricityState.x2 - electricityState.x1);
-
-    if (interactionText === "\u062A\u062C\u0627\u0630\u0628" && newDistance <= MIN_SEPARATION) {
-        const mid = (electricityState.x1 + electricityState.x2) / 2;
-        electricityState.x1 = mid - MIN_SEPARATION / 2;
-        electricityState.x2 = mid + MIN_SEPARATION / 2;
-        electricityState.v1 = 0;
-        electricityState.v2 = 0;
-        finishElectricityAnimation("\u0648\u0635\u0644\u062A \u0627\u0644\u0634\u062D\u0646\u062A\u0627\u0646 \u0625\u0644\u0649 \u062D\u062F \u0627\u0644\u062A\u0642\u0627\u0631\u0628 \u0627\u0644\u0623\u0642\u0635\u0649 \u0641\u064A \u0627\u0644\u0639\u0631\u0636");
-        return;
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.moveTo(x2, y2);
+        ctx.lineTo(x2 - head * Math.cos(angle - Math.PI / 7), y2 - head * Math.sin(angle - Math.PI / 7));
+        ctx.lineTo(x2 - head * Math.cos(angle + Math.PI / 7), y2 - head * Math.sin(angle + Math.PI / 7));
+        ctx.closePath();
+        ctx.fill();
     }
 
-    if (interactionText === "\u062A\u0646\u0627\u0641\u0631" && newDistance >= MAX_SEPARATION) {
-        finishElectricityAnimation("\u0627\u0628\u062A\u0639\u062F\u062A \u0627\u0644\u0634\u062D\u0646\u062A\u0627\u0646 \u062E\u0627\u0631\u062C \u0645\u062C\u0627\u0644 \u0627\u0644\u0639\u0631\u0636");
-        return;
+    function drawCharge(ctx, x, y, radius, value) {
+        const positive = value >= 0;
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fillStyle = positive ? "#f0b35a" : "#78bfff";
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = "rgba(255,255,255,0.92)";
+        ctx.stroke();
+
+        ctx.fillStyle = positive ? "#5b3100" : "#0c2d4a";
+        ctx.font = "700 34px Cairo";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText(positive ? "+" : "-", x, y + 1);
+        ctx.restore();
     }
 
-    if (electricityState.t >= MAX_SIM_TIME) {
-        finishElectricityAnimation("\u0627\u0646\u062A\u0647\u062A \u0627\u0644\u0645\u062D\u0627\u0643\u0627\u0629 \u0639\u0646\u062F \u0627\u0644\u0632\u0645\u0646 \u0627\u0644\u0645\u062D\u062F\u062F");
-    }
-}
+    function renderCoulomb() {
+        const canvas = coulombModel.canvas;
+        const ctx = canvas.getContext("2d");
+        const width = canvas.clientWidth || 720;
+        const height = 360;
+        canvas.width = width;
+        canvas.height = height;
 
-function runElectricityFrame(timestamp) {
-    if (!electricityRunning || !electricityState) {
-        return;
-    }
+        const q1Micro = parseFloat(coulombModel.q1.value);
+        const q2Micro = parseFloat(coulombModel.q2.value);
+        const distanceCm = parseFloat(coulombModel.distance.value);
+        const q1 = q1Micro * 1e-6;
+        const q2 = q2Micro * 1e-6;
+        const distanceM = distanceCm / 100;
+        const forceMagnitude = q1 === 0 || q2 === 0 ? 0 : COULOMB_K * Math.abs(q1 * q2) / (distanceM * distanceM);
+        const interaction = q1 === 0 || q2 === 0 ? "لا توجد قوة" : (q1 * q2 > 0 ? "تنافر" : "تجاذب");
 
-    if (!lastTimestamp) {
-        lastTimestamp = timestamp;
-    }
+        coulombModel.q1Val.textContent = formatSignedMicro(q1Micro);
+        coulombModel.q2Val.textContent = formatSignedMicro(q2Micro);
+        coulombModel.distanceVal.textContent = `${distanceCm.toFixed(0)} cm`;
+        coulombModel.forceVal.textContent = formatScaledUnit(forceMagnitude, "N");
+        coulombModel.typeVal.textContent = interaction;
+        coulombModel.distanceNowVal.textContent = `${distanceM.toFixed(3)} m`;
+        coulombModel.explain.textContent = q1 === 0 || q2 === 0
+            ? "عندما تكون إحدى الشحنتين صفرًا تنعدم القوة الكهربائية بينهما."
+            : interaction === "تنافر"
+                ? "الشحنتان متماثلتا الإشارة، لذا تدفع كل منهما الأخرى بعيدًا عنها."
+                : "الشحنتان مختلفتا الإشارة، لذا تنجذب كل منهما نحو الأخرى.";
 
-    const realDt = Math.min(0.04, (timestamp - lastTimestamp) / 1000);
-    lastTimestamp = timestamp;
-    const scaledDt = realDt * electricityState.speedScale;
+        drawPanelBackground(ctx, width, height);
+        drawGrid(ctx, width, height, 64, 56);
 
-    stepElectricity(scaledDt);
-    renderElectricity(electricityState);
+        const centerY = height / 2;
+        const centerX = width / 2;
+        const availableWidth = Math.max(220, width - 220);
+        const pxPerCm = availableWidth / 100;
+        const separationPx = Math.max(56, distanceCm * pxPerCm);
+        const x1 = centerX - separationPx / 2;
+        const x2 = centerX + separationPx / 2;
 
-    if (electricityRunning) {
-        electricStatus.textContent = "\u0627\u0644\u0645\u062D\u0627\u0643\u0627\u0629 \u062A\u0639\u0645\u0644 \u0627\u0644\u0622\u0646";
-        electricityFrame = requestAnimationFrame(runElectricityFrame);
-    }
-}
+        ctx.strokeStyle = AXIS_COLOR;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(44, centerY);
+        ctx.lineTo(width - 44, centerY);
+        ctx.stroke();
 
-function updateElectricityPreview() {
-    if (electricityRunning) {
-        return;
-    }
+        ctx.setLineDash([8, 10]);
+        ctx.strokeStyle = "rgba(255,255,255,0.18)";
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(x1, centerY - 66);
+        ctx.lineTo(x2, centerY - 66);
+        ctx.stroke();
+        ctx.setLineDash([]);
 
-    electricityState = createInitialState();
-    electricStatus.textContent = "\u062C\u0627\u0647\u0632 \u0644\u0644\u0645\u062D\u0627\u0643\u0627\u0629";
-    renderElectricity(electricityState);
-}
+        drawCharge(ctx, x1, centerY, 30, q1Micro);
+        drawCharge(ctx, x2, centerY, 30, q2Micro);
 
-function startElectricitySimulation() {
-    if (electricityRunning) {
-        return;
-    }
+        if (interaction !== "لا توجد قوة") {
+            const sameSign = q1 * q2 > 0;
+            const arrowSize = Math.min(108, 30 + Math.log10(forceMagnitude + 1) * 28);
 
-    electricityState = createInitialState();
-    electricityRunning = true;
-    lastTimestamp = 0;
-    startElectricityButton.disabled = true;
-    electricStatus.textContent = "\u0628\u062F\u0623 \u0627\u0644\u062A\u0641\u0627\u0639\u0644 \u0628\u064A\u0646 \u0627\u0644\u0634\u062D\u0646\u062A\u064A\u0646";
-    renderElectricity(electricityState);
-    electricityFrame = requestAnimationFrame(runElectricityFrame);
-}
-
-function resetElectricitySimulation() {
-    stopElectricityAnimation();
-    electricityState = createInitialState();
-    electricStatus.textContent = "\u0623\u0639\u064A\u062F\u062A \u0627\u0644\u0645\u062D\u0627\u0643\u0627\u0629 \u0625\u0644\u0649 \u0627\u0644\u0628\u062F\u0627\u064A\u0629";
-    renderElectricity(electricityState);
-}
-
-if (
-    charge1Slider &&
-    charge2Slider &&
-    distanceSlider &&
-    simSpeedSlider &&
-    startElectricityButton &&
-    resetElectricityButton
-) {
-    [charge1Slider, charge2Slider, distanceSlider, simSpeedSlider].forEach((input) => {
-        input.addEventListener("input", () => {
-            if (electricityRunning) {
-                resetElectricitySimulation();
+            if (sameSign) {
+                drawArrow(ctx, x1 - 42, centerY, x1 - 42 - arrowSize, centerY, "#f0b35a");
+                drawArrow(ctx, x2 + 42, centerY, x2 + 42 + arrowSize, centerY, "#78bfff");
             } else {
-                updateElectricityPreview();
+                drawArrow(ctx, x1 + 42, centerY, x1 + 42 + arrowSize, centerY, "#f0b35a");
+                drawArrow(ctx, x2 - 42, centerY, x2 - 42 - arrowSize, centerY, "#78bfff");
             }
-        });
-    });
-
-    startElectricityButton.addEventListener("click", startElectricitySimulation);
-    resetElectricityButton.addEventListener("click", resetElectricitySimulation);
-    window.addEventListener("resize", () => {
-        if (!electricityState) {
-            electricityState = createInitialState();
         }
-        renderElectricity(electricityState);
+    }
+
+    [coulombModel.q1, coulombModel.q2, coulombModel.distance].forEach((input) => {
+        input.addEventListener("input", renderCoulomb);
     });
 
-    updateElectricityPreview();
-}
+    window.addEventListener("resize", renderCoulomb);
 
-
-</script>
+    renderCoulomb();
+})();
+    </script>
 </body>
 </html>
+
