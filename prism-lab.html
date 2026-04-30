@@ -1,0 +1,1610 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قسم الفيزياء | تشتت الضوء بواسطة المنشور</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+
+:root {
+    --bg-deep: #071824;
+    --bg-mid: #12304a;
+    --card: rgba(255, 255, 255, 0.94);
+    --ink: #10263b;
+    --muted: #5a7086;
+    --accent: #f0b35a;
+    --accent-strong: #d78921;
+    --shadow: 0 24px 60px rgba(3, 17, 31, 0.24);
+    --radius-lg: 28px;
+    --radius-md: 20px;
+    --line: rgba(16, 38, 59, 0.12);
+    --lab-dark: #081019;
+    --lab-panel: #0d1624;
+    --metal-1: #d7dee7;
+    --metal-2: #8b99ac;
+    --steel-1: #bfc8d2;
+    --steel-2: #6f7d92;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Cairo", "Segoe UI", Tahoma, sans-serif;
+    color: #ecf2f8;
+    background:
+        radial-gradient(circle at top right, rgba(240, 179, 90, 0.22), transparent 25%),
+        radial-gradient(circle at top left, rgba(92, 173, 255, 0.16), transparent 22%),
+        linear-gradient(145deg, var(--bg-deep) 0%, var(--bg-mid) 50%, #264563 100%);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.page-shell {
+    width: min(1180px, calc(100% - 32px));
+    margin: 0 auto;
+    padding: 24px 0 48px;
+}
+
+.site-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 20px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-lg);
+    background: rgba(7, 24, 36, 0.42);
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow);
+}
+
+.brand-lockup {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.logo-badge {
+    width: 76px;
+    height: 76px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 10px;
+    object-fit: contain;
+}
+
+.logo-badge--hero {
+    width: 290px;
+    height: 150px;
+    max-width: 100%;
+    padding: 14px 18px;
+    background: #ffffff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    flex: 0 0 auto;
+    object-fit: contain;
+}
+
+.site-header--welcome .brand-lockup {
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+}
+
+.brand-copy {
+    flex: 1;
+    text-align: center;
+    min-width: 0;
+}
+
+.brand-copy h1 {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.6vw, 2.5rem);
+    font-weight: 800;
+}
+
+.top-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.top-nav a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.07);
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.top-nav a:hover {
+    transform: translateY(-2px);
+}
+
+.top-nav a[aria-current="page"] {
+    color: #11263b;
+    background: var(--accent);
+    border-color: transparent;
+}
+
+.hero {
+    margin-top: 18px;
+}
+
+.hero-panel,
+.card {
+    background: var(--card);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.placeholder-card {
+    display: grid;
+    justify-items: center;
+    gap: 18px;
+    min-height: 300px;
+    padding: 44px 28px;
+    text-align: center;
+    background: var(--card);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+}
+
+.placeholder-card h3,
+.placeholder-card p {
+    margin: 0;
+}
+
+.placeholder-card h3 {
+    color: #111827;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.35;
+    font-weight: 800;
+}
+
+.placeholder-card p {
+    max-width: 40rem;
+    color: rgba(16, 38, 59, 0.64);
+    font-size: 1.08rem;
+    line-height: 1.9;
+    font-weight: 700;
+}
+
+.primary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0 22px;
+    border-radius: 999px;
+    color: #11263b;
+    background: var(--accent);
+    font-weight: 800;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.primary-button:hover {
+    transform: translateY(-2px);
+}
+
+.hero-panel {
+    padding: 22px 26px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-panel::before {
+    content: "";
+    position: absolute;
+    inset: auto -80px -80px auto;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(240, 179, 90, 0.35), transparent 70%);
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    color: var(--accent-strong);
+    background: rgba(240, 179, 90, 0.16);
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+.hero-panel h2 {
+    margin: 12px 0 6px;
+    font-size: clamp(1.9rem, 3.6vw, 2.8rem);
+    line-height: 1.15;
+}
+
+.hero-panel p {
+    margin: 0;
+    max-width: 48rem;
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.card[id] {
+    scroll-margin-top: 26px;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.92fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.hero-note {
+    display: grid;
+    gap: 14px;
+    padding: 18px 20px;
+    border-radius: 24px;
+    background: rgba(10, 26, 41, 0.88);
+    color: #eff6fb;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.04);
+}
+
+.hero-note strong {
+    font-size: 1rem;
+}
+
+.hero-note p {
+    margin: 0;
+    color: rgba(239, 246, 251, 0.8);
+    line-height: 1.85;
+}
+
+.hero-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.hero-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.08);
+    color: #f3f8fd;
+    font-weight: 700;
+    font-size: 0.94rem;
+}
+
+.lab-directory {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.lab-link-card {
+    position: relative;
+    display: grid;
+    gap: 8px;
+    min-height: 188px;
+    padding: 22px;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.lab-link-card::after {
+    content: "";
+    position: absolute;
+    inset: auto -34px -34px auto;
+    width: 132px;
+    height: 132px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,255,255,0.22), transparent 70%);
+    opacity: 0.7;
+}
+
+.lab-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        0 18px 36px rgba(8, 19, 32, 0.16);
+}
+
+.lab-link-card strong,
+.lab-link-card span,
+.lab-link-card small {
+    position: relative;
+    z-index: 1;
+}
+
+.lab-link-card strong {
+    font-size: 1.2rem;
+}
+
+.lab-link-card span {
+    color: rgba(16, 38, 59, 0.76);
+    line-height: 1.8;
+}
+
+.lab-link-card small {
+    color: rgba(16, 38, 59, 0.62);
+    font-weight: 700;
+}
+
+.lab-link-card--hooke {
+    background:
+        radial-gradient(circle at top left, rgba(240, 179, 90, 0.22), transparent 28%),
+        linear-gradient(145deg, #f8fbff 0%, #eaf2fb 54%, #dbe6f5 100%);
+}
+
+.lab-link-card--refraction {
+    color: #eff8ff;
+    background:
+        radial-gradient(circle at top right, rgba(115, 220, 255, 0.36), transparent 26%),
+        radial-gradient(circle at 20% 18%, rgba(255, 102, 122, 0.22), transparent 20%),
+        linear-gradient(145deg, #10253a 0%, #163b5a 54%, #1f5779 100%);
+}
+
+.lab-link-card--refraction span,
+.lab-link-card--refraction small {
+    color: rgba(239, 248, 255, 0.82);
+}
+
+.content-grid {
+    display: grid;
+    gap: 22px;
+    margin-top: 22px;
+}
+
+.card {
+    padding: 26px;
+}
+
+.card-title {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.card-title h3,
+.card-title p {
+    margin: 0;
+}
+
+.card-title p {
+    color: var(--muted);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-strong);
+    background: rgba(240, 179, 90, 0.16);
+}
+
+.sim-layout {
+    display: grid;
+    direction: ltr;
+    grid-template-columns: minmax(0, 1.3fr) minmax(300px, 0.88fr);
+    gap: 18px;
+    align-items: start;
+}
+
+.sim-layout > * {
+    direction: rtl;
+}
+
+.sim-panel {
+    display: grid;
+    gap: 18px;
+}
+
+.lab-stage {
+    position: relative;
+    min-height: 660px;
+    border-radius: 28px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at top center, rgba(255,255,255,0.05), transparent 35%),
+        linear-gradient(180deg, #121e2e 0%, #0a111b 58%, #090f18 100%);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.08),
+        inset 0 30px 60px rgba(255,255,255,0.03),
+        0 22px 50px rgba(5, 14, 24, 0.28);
+}
+
+.lab-stage::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0;
+    height: 110px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.03)),
+        linear-gradient(180deg, #172535, #0d1825);
+    border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.lab-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.prism-stage {
+    min-height: 620px;
+    background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,0.06), transparent 18%),
+        radial-gradient(circle at 78% 26%, rgba(123, 213, 255, 0.10), transparent 28%),
+        radial-gradient(circle at 86% 58%, rgba(255, 89, 89, 0.12), transparent 24%),
+        linear-gradient(180deg, #111927 0%, #0a1018 48%, #070b11 100%);
+}
+
+.prism-stage::after {
+    display: none;
+}
+
+.lab-ruler {
+    position: absolute;
+    top: 82px;
+    left: 26px;
+    width: 34px;
+    height: 430px;
+    border-radius: 16px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.22), rgba(255,255,255,0.06)),
+        linear-gradient(180deg, #c4b389, #9e8b61);
+    box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.15),
+        0 10px 20px rgba(0,0,0,0.18);
+}
+
+.lab-ruler::before {
+    content: "";
+    position: absolute;
+    inset: 14px 10px;
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 9px,
+            rgba(48, 36, 15, 0.72) 9px,
+            rgba(48, 36, 15, 0.72) 11px
+        ),
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 49px,
+            rgba(48, 36, 15, 0.95) 49px,
+            rgba(48, 36, 15, 0.95) 52px
+        );
+    border-radius: 8px;
+}
+
+.hanger-zone {
+    position: absolute;
+    top: 138px;
+    left: 50%;
+    width: 190px;
+    height: 360px;
+    transform: translateX(-50%);
+    border-radius: 32px;
+    border: 2px dashed rgba(240, 179, 90, 0.18);
+    background: rgba(240, 179, 90, 0.03);
+    transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+}
+
+.hanger-zone.active {
+    border-color: rgba(240, 179, 90, 0.52);
+    background: rgba(240, 179, 90, 0.09);
+    box-shadow: 0 0 0 6px rgba(240, 179, 90, 0.06);
+}
+
+.mass-stack {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 130px;
+}
+
+.hanging-mass {
+    position: absolute;
+    left: 50%;
+    width: 98px;
+    height: 54px;
+    transform: translateX(-50%);
+    border-radius: 18px 18px 14px 14px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.16)),
+        linear-gradient(180deg, var(--metal-1), var(--metal-2));
+    box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.35),
+        inset 0 -8px 16px rgba(0,0,0,0.18),
+        0 12px 20px rgba(0,0,0,0.28);
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    color: #1f3145;
+    letter-spacing: 0.2px;
+    pointer-events: auto;
+    cursor: pointer;
+    user-select: none;
+}
+
+.hanging-mass::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    width: 24px;
+    height: 18px;
+    transform: translateX(-50%);
+    border-radius: 16px 16px 8px 8px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.12)),
+        linear-gradient(180deg, #dce5ef, #8a97aa);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.32);
+}
+
+.mass-tray {
+    position: absolute;
+    right: 22px;
+    left: 22px;
+    bottom: 18px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(88px, 1fr));
+    gap: 12px;
+    z-index: 3;
+}
+
+.mass-chip {
+    position: relative;
+    min-height: 72px;
+    border: 0;
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.10)),
+        linear-gradient(180deg, #d8dde6, #7d8798);
+    color: #13283b;
+    font: inherit;
+    font-weight: 800;
+    cursor: grab;
+    box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.30),
+        inset 0 -10px 20px rgba(0,0,0,0.16),
+        0 10px 18px rgba(0,0,0,0.20);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    display: grid;
+    place-items: center;
+}
+
+.mass-chip::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    width: 24px;
+    height: 12px;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.18));
+}
+
+.mass-chip:hover,
+.mass-chip:active {
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.30),
+        inset 0 -10px 20px rgba(0,0,0,0.16),
+        0 14px 22px rgba(0,0,0,0.24);
+}
+
+.mass-chip span,
+.hanging-mass span {
+    display: block;
+    margin-top: 8px;
+    font-size: 1rem;
+}
+
+.drag-ghost {
+    position: absolute;
+    width: 98px;
+    height: 66px;
+    border-radius: 20px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.66), rgba(255,255,255,0.10)),
+        linear-gradient(180deg, #d8dde6, #7d8798);
+    box-shadow:
+        inset 0 2px 6px rgba(255,255,255,0.30),
+        inset 0 -10px 20px rgba(0,0,0,0.16),
+        0 20px 28px rgba(0,0,0,0.30);
+    color: #13283b;
+    font-weight: 800;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    z-index: 7;
+}
+
+.control-grid {
+    display: grid;
+    gap: 16px;
+}
+
+.control-group,
+.result-card,
+.mass-list {
+    padding: 18px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+}
+
+.control-group label,
+.result-card strong,
+.mass-list h4 {
+    display: block;
+    margin: 0 0 8px;
+    font-weight: 800;
+}
+
+.control-group input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent-strong);
+}
+
+.control-group select {
+    width: 100%;
+    min-height: 48px;
+    border: none;
+    border-radius: 16px;
+    padding: 0 14px;
+    background: rgba(255,255,255,0.86);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    box-shadow: inset 0 0 0 1px rgba(16, 38, 59, 0.08);
+}
+
+.value-display {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.08);
+    color: var(--ink);
+    font-weight: 700;
+    font-family: "Cascadia Mono", "Consolas", monospace;
+    margin-top: 8px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.result-card span {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.metric-value {
+    color: var(--ink);
+    font-family: "Cascadia Mono", "Consolas", monospace;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.sim-button {
+    min-height: 46px;
+    border: none;
+    border-radius: 999px;
+    padding: 0 22px;
+    background: var(--accent);
+    color: #11263b;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sim-button:hover {
+    transform: translateY(-2px);
+}
+
+.sim-button--secondary {
+    background: rgba(16, 38, 59, 0.10);
+    color: var(--ink);
+}
+
+.sim-button:disabled {
+    opacity: 0.58;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.mass-list {
+    display: grid;
+    gap: 10px;
+}
+
+.mass-list h4 {
+    margin-bottom: 2px;
+}
+
+.mass-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.mass-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.55);
+    color: var(--ink);
+}
+
+.mass-remove {
+    border: none;
+    border-radius: 999px;
+    background: rgba(16, 38, 59, 0.08);
+    color: var(--ink);
+    font: inherit;
+    font-weight: 700;
+    min-height: 34px;
+    padding: 0 12px;
+    cursor: pointer;
+}
+
+.formula-note {
+    padding: 16px 18px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    color: var(--muted);
+    line-height: 1.9;
+}
+
+.formula-note strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--ink);
+}
+
+.prism-notes-grid,
+.prism-questions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+}
+
+.prism-mini-card {
+    padding: 16px 18px;
+    border-radius: var(--radius-md);
+    background: rgba(16, 38, 59, 0.05);
+    color: var(--muted);
+    line-height: 1.85;
+}
+
+.prism-mini-card strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--ink);
+}
+
+.empty-note {
+    color: var(--muted);
+    margin: 0;
+}
+
+.control-help {
+    margin: 10px 0 0;
+    color: var(--muted);
+    line-height: 1.75;
+    font-size: 0.94rem;
+}
+
+.refraction-stage {
+    background:
+        radial-gradient(circle at 76% 16%, rgba(96, 219, 255, 0.24), transparent 24%),
+        radial-gradient(circle at 20% 18%, rgba(255, 112, 129, 0.16), transparent 18%),
+        linear-gradient(180deg, #0f1b2b 0%, #09121c 56%, #081018 100%);
+}
+
+.refraction-stage::before {
+    content: "";
+    position: absolute;
+    inset: 18px 24px 130px;
+    border-radius: 30px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01)),
+        radial-gradient(circle at top center, rgba(255,255,255,0.08), transparent 40%);
+    opacity: 0.95;
+}
+
+.refraction-panel {
+    position: relative;
+}
+
+@media (max-width: 1020px) {
+    .hero-grid,
+    .lab-directory {
+        grid-template-columns: 1fr;
+    }
+
+    .sim-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 720px) {
+    .page-shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+    }
+
+    .site-header,
+    .hero-panel,
+    .card {
+        border-radius: 22px;
+    }
+
+    .site-header {
+        padding: 18px;
+    }
+
+    .brand-lockup {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .site-header--welcome .brand-lockup {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .logo-badge {
+        width: 62px;
+        height: 62px;
+        border-radius: 18px;
+    }
+
+    .logo-badge--hero {
+        width: 220px;
+        height: 118px;
+        max-width: 100%;
+        padding: 10px 12px;
+    }
+
+    .card {
+        padding: 22px;
+    }
+
+    .lab-stage {
+        min-height: 700px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .mass-tray {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+    </style>
+</head>
+<body>
+    <main class="page-shell">
+        <header class="site-header site-header--welcome">
+            <div class="brand-lockup">
+                <img class="logo-badge logo-badge--hero logo-badge--faculty" src="./faculty-logo.png" alt="شعار الكلية">
+                <div class="brand-copy">
+                    <h1>تشتت الضوء بواسطة المنشور</h1>
+                </div>
+                <img class="logo-badge logo-badge--hero logo-badge--university" src="./university-logo.png" alt="شعار الجامعة">
+            </div>
+                        <nav class="top-nav" aria-label="روابط الصفحات">
+                <a href="./index.html">الرئيسية</a>
+                <a href="./classical.html">الميكانيكا الكلاسيكية</a>
+                <a href="./waves.html">أساسيات الموجات</a>
+                <a href="./electricity.html">الكهربائية</a>
+                <a href="./quantum.html">ميكانيكا الكم</a>
+                <a href="./triangular.html">بئر جهد مثلثي</a>
+                <a href="./dirac-delta.html">أدوات رياضية في الفيزياء</a>
+                <a href="./virtual-lab.html">معمل افتراضي</a>
+                <a href="./hooke-lab.html">قانون هوك</a>
+                <a href="./refraction-lab.html">انكسار الضوء</a>
+                <a href="./prism-lab.html" aria-current="page">تشتت الضوء</a>
+            </nav>
+        </header>
+
+        <section class="content-grid">
+            <article class="placeholder-card">
+                <h3>قيد التطوير...</h3>
+                <p>تجربة تشتت الضوء بواسطة المنشور ستضاف هنا لاحقًا.</p>
+                <a class="primary-button" href="./virtual-lab.html">العودة إلى المعمل الافتراضي</a>
+            </article>
+
+            <article class="card" hidden aria-hidden="true">
+                <div class="card-title">
+                    <div>
+                        <h3>تشتت الضوء بواسطة المنشور</h3>
+                    </div>
+                    <div class="badge">n(λ)</div>
+                </div>
+
+                <div class="formula-note">
+                    عند مرور الضوء الأبيض خلال منشور زجاجي، تنكسر مكوناته اللونية بزوايا مختلفة لأن معامل الانكسار يعتمد على الطول الموجي، لذلك ينفصل الضوء إلى ألوان الطيف.
+                </div>
+
+                <div class="sim-layout">
+                    <div class="lab-stage prism-stage" id="prismStage">
+                        <svg class="lab-svg" id="prismSvg" viewBox="0 0 900 660" preserveAspectRatio="none" aria-label="مشهد مختبري لتشتت الضوء بواسطة المنشور">
+                            <defs>
+                                <linearGradient id="stageGlass" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,0.07)"></stop>
+                                    <stop offset="100%" stop-color="rgba(255,255,255,0.01)"></stop>
+                                </linearGradient>
+                                <linearGradient id="prismGlass" x1="0" x2="1" y1="0" y2="1">
+                                    <stop id="prismTopStop" offset="0%" stop-color="rgba(232, 245, 255, 0.48)"></stop>
+                                    <stop id="prismBottomStop" offset="100%" stop-color="rgba(156, 198, 236, 0.14)"></stop>
+                                </linearGradient>
+                                <linearGradient id="prismFacet" x1="0" x2="1" y1="0" y2="0">
+                                    <stop offset="0%" stop-color="rgba(255,255,255,0.20)"></stop>
+                                    <stop offset="100%" stop-color="rgba(255,255,255,0.04)"></stop>
+                                </linearGradient>
+                                <linearGradient id="mountMetal" x1="0" x2="0" y1="0" y2="1">
+                                    <stop offset="0%" stop-color="#eef3f8"></stop>
+                                    <stop offset="42%" stop-color="#94a5b9"></stop>
+                                    <stop offset="100%" stop-color="#5d6c80"></stop>
+                                </linearGradient>
+                                <filter id="beamBlur" x="-40%" y="-40%" width="180%" height="180%">
+                                    <feGaussianBlur stdDeviation="6.5"></feGaussianBlur>
+                                </filter>
+                                <filter id="softGlow" x="-60%" y="-60%" width="220%" height="220%">
+                                    <feGaussianBlur stdDeviation="13"></feGaussianBlur>
+                                </filter>
+                                <filter id="glassGlow" x="-30%" y="-30%" width="160%" height="160%">
+                                    <feGaussianBlur stdDeviation="3.8"></feGaussianBlur>
+                                </filter>
+                            </defs>
+
+                            <rect x="62" y="38" width="776" height="530" rx="34" fill="url(#stageGlass)" stroke="rgba(255,255,255,0.06)" stroke-width="2"></rect>
+                            <ellipse cx="452" cy="558" rx="290" ry="22" fill="rgba(0,0,0,0.26)"></ellipse>
+                            <rect x="120" y="546" width="624" height="14" rx="7" fill="rgba(233,242,255,0.11)"></rect>
+
+                            <g id="laserAssembly">
+                                <rect id="laserArm" x="70" y="214" width="144" height="12" rx="6" fill="url(#mountMetal)" opacity="0.95"></rect>
+                                <rect x="54" y="196" width="18" height="180" rx="9" fill="url(#mountMetal)" opacity="0.94"></rect>
+                                <rect x="28" y="372" width="124" height="18" rx="9" fill="url(#mountMetal)" opacity="0.94"></rect>
+                                <g id="laserHead">
+                                    <rect x="138" y="194" width="92" height="32" rx="16" fill="#cad5e0"></rect>
+                                    <rect x="146" y="199" width="46" height="22" rx="11" fill="#8494a8"></rect>
+                                    <rect x="192" y="198" width="38" height="24" rx="12" fill="#414d5e"></rect>
+                                    <circle id="laserLens" cx="232" cy="210" r="8" fill="#fffdf4"></circle>
+                                    <circle id="laserHalo" cx="232" cy="210" r="24" fill="rgba(255,255,255,0.22)"></circle>
+                                </g>
+                            </g>
+
+                            <g id="screenAssembly">
+                                <rect x="760" y="118" width="18" height="338" rx="9" fill="url(#mountMetal)" opacity="0.88"></rect>
+                                <rect x="738" y="454" width="64" height="16" rx="8" fill="url(#mountMetal)" opacity="0.88"></rect>
+                                <rect x="780" y="126" width="26" height="312" rx="12" fill="rgba(240,247,255,0.08)"></rect>
+                                <rect id="screenPanel" x="784" y="134" width="18" height="296" rx="9" fill="rgba(242,247,255,0.14)" stroke="rgba(248,252,255,0.28)" stroke-width="1.5"></rect>
+                                <g id="screenSpectrum"></g>
+                            </g>
+
+                            <g id="prismMount">
+                                <path d="M 418 436 L 444 342 L 494 342 L 520 436" fill="rgba(180,196,214,0.18)" stroke="rgba(236,244,255,0.20)" stroke-width="2"></path>
+                                <rect x="396" y="436" width="146" height="10" rx="5" fill="#bcc9d8" opacity="0.28"></rect>
+                            </g>
+
+                            <polygon id="prismBody" points="" fill="url(#prismGlass)" stroke="rgba(236,245,255,0.56)" stroke-width="4"></polygon>
+                            <polygon id="prismHighlight" points="" fill="url(#prismFacet)" opacity="0.80"></polygon>
+                            <polygon id="prismGlow" points="" fill="rgba(188,228,255,0.18)" filter="url(#glassGlow)"></polygon>
+                            <path id="prismEdgeLeft" d="" fill="none" stroke="rgba(248,252,255,0.70)" stroke-width="2.2"></path>
+                            <path id="prismEdgeRight" d="" fill="none" stroke="rgba(248,252,255,0.52)" stroke-width="1.8"></path>
+                            <path id="prismBaseEdge" d="" fill="none" stroke="rgba(220,236,255,0.34)" stroke-width="1.8"></path>
+
+                            <path id="incidentBeamGlow" d="" fill="none" stroke="rgba(255,255,255,0.32)" stroke-width="24" stroke-linecap="round" filter="url(#softGlow)"></path>
+                            <path id="incidentBeam" d="" fill="none" stroke="#fffaf2" stroke-width="6.5" stroke-linecap="round"></path>
+
+                            <g id="prismInnerGlow"></g>
+                            <g id="prismInnerBeams"></g>
+                            <g id="spectrumAuras"></g>
+                            <g id="spectrumBeams"></g>
+                            <g id="screenHits"></g>
+                        </svg>
+                    </div>
+
+                    <div class="sim-panel">
+                        <div class="control-grid">
+                            <div class="control-group">
+                                <label for="prismIncidentAngle">زاوية السقوط</label>
+                                <input type="range" id="prismIncidentAngle" min="12" max="36" step="1" value="24">
+                                <div class="value-display" id="prismIncidentAngleVal">24.0°</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="prismApexAngle">زاوية رأس المنشور</label>
+                                <input type="range" id="prismApexAngle" min="28" max="42" step="1" value="40">
+                                <div class="value-display" id="prismApexAngleVal">40.0°</div>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="prismMaterial">مادة المنشور</label>
+                                <select id="prismMaterial">
+                                    <option value="crown">زجاج عادي</option>
+                                    <option value="flint" selected>زجاج فلينت</option>
+                                    <option value="acrylic">أكريليك بصري</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="prismMode">نمط الضوء</label>
+                                <select id="prismMode">
+                                    <option value="white" selected>ضوء أبيض</option>
+                                    <option value="single">طول موجي مفرد</option>
+                                </select>
+                            </div>
+
+                            <div class="control-group">
+                                <label for="prismBand">اللون أو الطول الموجي</label>
+                                <select id="prismBand">
+                                    <option value="red">الأحمر — 700 nm</option>
+                                    <option value="orange">البرتقالي — 620 nm</option>
+                                    <option value="yellow">الأصفر — 580 nm</option>
+                                    <option value="green">الأخضر — 530 nm</option>
+                                    <option value="blue">الأزرق — 470 nm</option>
+                                    <option value="violet">البنفسجي — 400 nm</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="result-grid">
+                            <div class="result-card">
+                                <strong>زاوية السقوط</strong>
+                                <span class="metric-value" id="prismIncidenceResult">24.0°</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>زاوية رأس المنشور</strong>
+                                <span class="metric-value" id="prismApexResult">40.0°</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>n الأحمر</strong>
+                                <span class="metric-value" id="prismRedIndexVal">1.620</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>n البنفسجي</strong>
+                                <span class="metric-value" id="prismVioletIndexVal">1.660</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>انحراف الأحمر</strong>
+                                <span class="metric-value" id="prismRedDeviationVal">13.2°</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>مقدار التشتت</strong>
+                                <span class="metric-value" id="prismSpreadVal">0.7°</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>الطول الموجي λ</strong>
+                                <span class="metric-value" id="prismLambdaVal">400–700 nm</span>
+                            </div>
+                            <div class="result-card">
+                                <strong>معامل الانكسار n</strong>
+                                <span class="metric-value" id="prismCurrentIndexVal">1.620–1.662</span>
+                            </div>
+                        </div>
+
+                        <div class="button-row">
+                            <button class="sim-button" type="button" id="resetPrism">إعادة ضبط التجربة</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prism-notes-grid">
+                    <div class="prism-mini-card">
+                        <strong>ملاحظة</strong>
+                        الأحمر: طول موجي أكبر → انحراف أقل.
+                    </div>
+                    <div class="prism-mini-card">
+                        <strong>ملاحظة</strong>
+                        البنفسجي: طول موجي أصغر → انحراف أكبر.
+                    </div>
+                    <div class="prism-mini-card">
+                        <strong>ملاحظة</strong>
+                        التشتت ليس مجرد انكسار، بل اختلاف في الانكسار بين الألوان.
+                    </div>
+                </div>
+
+                <div class="prism-questions-grid">
+                    <div class="prism-mini-card">
+                        <strong>سؤال 1</strong>
+                        ماذا يحدث لتباعد الألوان عند زيادة شدة التشتت؟
+                    </div>
+                    <div class="prism-mini-card">
+                        <strong>سؤال 2</strong>
+                        أي لون ينحرف أكثر؟ ولماذا؟
+                    </div>
+                    <div class="prism-mini-card">
+                        <strong>سؤال 3</strong>
+                        هل يخرج الضوء الأبيض كحزمة واحدة إذا كان معامل الانكسار ثابتًا لكل الألوان؟
+                    </div>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+    /* Physics: white light is represented by discrete visible wavelengths with different refractive indices. */
+    (() => {
+        const AIR_INDEX = 1.0;
+        const spectrum = [
+            { key: "red", label: "الأحمر", wavelength: 700, color: "#e56a63" },
+            { key: "orange", label: "البرتقالي", wavelength: 620, color: "#ef9a58" },
+            { key: "yellow", label: "الأصفر", wavelength: 580, color: "#e8cb67" },
+            { key: "green", label: "الأخضر", wavelength: 530, color: "#74cb8b" },
+            { key: "blue", label: "الأزرق", wavelength: 470, color: "#6f8fda" },
+            { key: "violet", label: "البنفسجي", wavelength: 400, color: "#9c7ad6" }
+        ];
+
+        const materials = {
+            crown: {
+                label: "زجاج عادي",
+                indices: {
+                    red: 1.513,
+                    orange: 1.514,
+                    yellow: 1.516,
+                    green: 1.518,
+                    blue: 1.521,
+                    violet: 1.525
+                },
+                topColor: "rgba(225, 244, 255, 0.50)",
+                bottomColor: "rgba(124, 175, 219, 0.16)"
+            },
+            flint: {
+                label: "زجاج فلينت",
+                indices: {
+                    red: 1.620,
+                    orange: 1.626,
+                    yellow: 1.632,
+                    green: 1.640,
+                    blue: 1.650,
+                    violet: 1.662
+                },
+                topColor: "rgba(239, 248, 255, 0.56)",
+                bottomColor: "rgba(149, 190, 235, 0.22)"
+            },
+            acrylic: {
+                label: "أكريليك بصري",
+                indices: {
+                    red: 1.485,
+                    orange: 1.488,
+                    yellow: 1.492,
+                    green: 1.495,
+                    blue: 1.499,
+                    violet: 1.503
+                },
+                topColor: "rgba(236, 249, 255, 0.46)",
+                bottomColor: "rgba(110, 196, 236, 0.16)"
+            }
+        };
+
+        const scene = {
+            apex: { x: 454, y: 162 },
+            sideLength: 296,
+            sourceLength: 406,
+            bounds: { left: 74, top: 64, right: 842, bottom: 560 },
+            screenX: 793,
+            entryFactor: 0.62
+        };
+
+        const refs = {
+            incidentAngle: document.getElementById("prismIncidentAngle"),
+            incidentAngleVal: document.getElementById("prismIncidentAngleVal"),
+            apexAngle: document.getElementById("prismApexAngle"),
+            apexAngleVal: document.getElementById("prismApexAngleVal"),
+            material: document.getElementById("prismMaterial"),
+            mode: document.getElementById("prismMode"),
+            band: document.getElementById("prismBand"),
+            incidenceResult: document.getElementById("prismIncidenceResult"),
+            apexResult: document.getElementById("prismApexResult"),
+            redIndexVal: document.getElementById("prismRedIndexVal"),
+            violetIndexVal: document.getElementById("prismVioletIndexVal"),
+            redDeviationVal: document.getElementById("prismRedDeviationVal"),
+            spreadVal: document.getElementById("prismSpreadVal"),
+            lambdaVal: document.getElementById("prismLambdaVal"),
+            currentIndexVal: document.getElementById("prismCurrentIndexVal"),
+            resetButton: document.getElementById("resetPrism"),
+            prismBody: document.getElementById("prismBody"),
+            prismHighlight: document.getElementById("prismHighlight"),
+            prismGlow: document.getElementById("prismGlow"),
+            prismEdgeLeft: document.getElementById("prismEdgeLeft"),
+            prismEdgeRight: document.getElementById("prismEdgeRight"),
+            prismBaseEdge: document.getElementById("prismBaseEdge"),
+            prismTopStop: document.getElementById("prismTopStop"),
+            prismBottomStop: document.getElementById("prismBottomStop"),
+            screenPanel: document.getElementById("screenPanel"),
+            screenSpectrum: document.getElementById("screenSpectrum"),
+            incidentBeamGlow: document.getElementById("incidentBeamGlow"),
+            incidentBeam: document.getElementById("incidentBeam"),
+            prismInnerGlow: document.getElementById("prismInnerGlow"),
+            prismInnerBeams: document.getElementById("prismInnerBeams"),
+            spectrumAuras: document.getElementById("spectrumAuras"),
+            spectrumBeams: document.getElementById("spectrumBeams"),
+            screenHits: document.getElementById("screenHits"),
+            laserAssembly: document.getElementById("laserAssembly"),
+            laserHead: document.getElementById("laserHead"),
+            laserArm: document.getElementById("laserArm")
+        };
+
+        function degToRad(value) {
+            return (value * Math.PI) / 180;
+        }
+
+        function radToDeg(value) {
+            return (value * 180) / Math.PI;
+        }
+
+        function clamp(value, min, max) {
+            return Math.min(Math.max(value, min), max);
+        }
+
+        function add(a, b) {
+            return { x: a.x + b.x, y: a.y + b.y };
+        }
+
+        function sub(a, b) {
+            return { x: a.x - b.x, y: a.y - b.y };
+        }
+
+        function scale(v, factor) {
+            return { x: v.x * factor, y: v.y * factor };
+        }
+
+        function dot(a, b) {
+            return (a.x * b.x) + (a.y * b.y);
+        }
+
+        function cross(a, b) {
+            return (a.x * b.y) - (a.y * b.x);
+        }
+
+        function lengthOf(v) {
+            return Math.hypot(v.x, v.y);
+        }
+
+        function normalize(v) {
+            const length = lengthOf(v) || 1;
+            return { x: v.x / length, y: v.y / length };
+        }
+
+        function lerp(a, b, t) {
+            return a + ((b - a) * t);
+        }
+
+        function prismVertices(apexAngleDeg) {
+            const halfAngle = degToRad(apexAngleDeg / 2);
+            const apex = scene.apex;
+            return {
+                apex,
+                left: {
+                    x: apex.x - (Math.sin(halfAngle) * scene.sideLength),
+                    y: apex.y + (Math.cos(halfAngle) * scene.sideLength)
+                },
+                right: {
+                    x: apex.x + (Math.sin(halfAngle) * scene.sideLength),
+                    y: apex.y + (Math.cos(halfAngle) * scene.sideLength)
+                }
+            };
+        }
+
+        function faceData(a, b, centroid) {
+            const tangent = normalize(sub(b, a));
+            const normalA = normalize({ x: -tangent.y, y: tangent.x });
+            const normalB = normalize({ x: tangent.y, y: -tangent.x });
+            const midpoint = scale(add(a, b), 0.5);
+            const toCentroid = sub(centroid, midpoint);
+            const inward = dot(toCentroid, normalA) > dot(toCentroid, normalB) ? normalA : normalB;
+            return { tangent, inward };
+        }
+
+        function chooseIncidentDir(face, angleRad, entryPoint) {
+            const candidates = [
+                normalize(add(scale(face.inward, Math.cos(angleRad)), scale(face.tangent, Math.sin(angleRad)))),
+                normalize(add(scale(face.inward, Math.cos(angleRad)), scale(face.tangent, -Math.sin(angleRad))))
+            ];
+
+            let best = candidates[0];
+            let bestScore = Infinity;
+
+            candidates.forEach((candidate) => {
+                const source = sub(entryPoint, scale(candidate, scene.sourceLength));
+                let score = Math.abs(source.y - 214);
+
+                if (source.x >= entryPoint.x) {
+                    score += 1000;
+                }
+
+                if (source.y < scene.bounds.top + 10 || source.y > scene.bounds.bottom - 40) {
+                    score += 600;
+                }
+
+                if (source.x > scene.bounds.left + 120) {
+                    score += 150;
+                }
+
+                if (score < bestScore) {
+                    bestScore = score;
+                    best = candidate;
+                }
+            });
+
+            return best;
+        }
+
+        function raySegmentIntersection(origin, direction, segA, segB) {
+            const segment = sub(segB, segA);
+            const denominator = cross(direction, segment);
+
+            if (Math.abs(denominator) < 1e-7) {
+                return null;
+            }
+
+            const relative = sub(segA, origin);
+            const t = cross(relative, segment) / denominator;
+            const u = cross(relative, direction) / denominator;
+
+            if (t > 1e-6 && u >= 0 && u <= 1) {
+                return add(origin, scale(direction, t));
+            }
+
+            return null;
+        }
+
+        function rayToBounds(origin, direction, bounds) {
+            const candidates = [];
+
+            if (direction.x > 0) {
+                candidates.push((bounds.right - origin.x) / direction.x);
+            } else if (direction.x < 0) {
+                candidates.push((bounds.left - origin.x) / direction.x);
+            }
+
+            if (direction.y > 0) {
+                candidates.push((bounds.bottom - origin.y) / direction.y);
+            } else if (direction.y < 0) {
+                candidates.push((bounds.top - origin.y) / direction.y);
+            }
+
+            const distance = Math.min(...candidates.filter((value) => value > 0));
+            return add(origin, scale(direction, distance));
+        }
+
+        function pointOnVertical(origin, direction, xLine) {
+            if (Math.abs(direction.x) < 1e-6) {
+                return null;
+            }
+            const t = (xLine - origin.x) / direction.x;
+            if (t <= 0) {
+                return null;
+            }
+            return add(origin, scale(direction, t));
+        }
+
+        function pathLine(from, to) {
+            return `M ${from.x.toFixed(2)} ${from.y.toFixed(2)} L ${to.x.toFixed(2)} ${to.y.toFixed(2)}`;
+        }
+
+        function formatAngle(value) {
+            return `${value.toFixed(1)}°`;
+        }
+
+        function formatLambdaRange(mode, band) {
+            if (mode === "single") {
+                return `${band.wavelength} nm`;
+            }
+            return "400–700 nm";
+        }
+
+        function updatePrismScene() {
+            const incidenceDeg = parseFloat(refs.incidentAngle.value);
+            const apexDeg = parseFloat(refs.apexAngle.value);
+            const material = materials[refs.material.value];
+            const mode = refs.mode.value;
+            const selectedBand = spectrum.find((band) => band.key === refs.band.value) || spectrum[0];
+            const visibleBands = mode === "single" ? [selectedBand] : spectrum;
+            const prism = prismVertices(apexDeg);
+            const centroid = {
+                x: (prism.apex.x + prism.left.x + prism.right.x) / 3,
+                y: (prism.apex.y + prism.left.y + prism.right.y) / 3
+            };
+
+            const leftFace = faceData(prism.apex, prism.left, centroid);
+            const rightFace = faceData(prism.apex, prism.right, centroid);
+            const entryPoint = add(prism.apex, scale(sub(prism.left, prism.apex), scene.entryFactor));
+            const incidentDir = chooseIncidentDir(leftFace, degToRad(incidenceDeg), entryPoint);
+            const source = sub(entryPoint, scale(incidentDir, scene.sourceLength));
+            const laserRotation = radToDeg(Math.atan2(incidentDir.y, incidentDir.x));
+
+            refs.laserAssembly.setAttribute("transform", `translate(${(source.x - 166).toFixed(2)} ${(source.y - 210).toFixed(2)})`);
+            refs.laserHead.setAttribute("transform", `rotate(${laserRotation.toFixed(2)} 184 210)`);
+            refs.laserArm.setAttribute("width", Math.max(96, source.x - 74).toFixed(2));
+
+            refs.prismTopStop.setAttribute("stop-color", material.topColor);
+            refs.prismBottomStop.setAttribute("stop-color", material.bottomColor);
+
+            const prismPoints = `${prism.apex.x.toFixed(2)},${prism.apex.y.toFixed(2)} ${prism.left.x.toFixed(2)},${prism.left.y.toFixed(2)} ${prism.right.x.toFixed(2)},${prism.right.y.toFixed(2)}`;
+            refs.prismBody.setAttribute("points", prismPoints);
+            refs.prismHighlight.setAttribute("points", `${prism.apex.x.toFixed(2)},${(prism.apex.y + 12).toFixed(2)} ${(prism.left.x + 16).toFixed(2)},${(prism.left.y - 48).toFixed(2)} ${(prism.right.x - 42).toFixed(2)},${(prism.right.y - 18).toFixed(2)}`);
+            refs.prismGlow.setAttribute("points", `${prism.apex.x.toFixed(2)},${prism.apex.y.toFixed(2)} ${prism.left.x.toFixed(2)},${prism.left.y.toFixed(2)} ${prism.right.x.toFixed(2)},${prism.right.y.toFixed(2)}`);
+            refs.prismEdgeLeft.setAttribute("d", pathLine(prism.apex, prism.left));
+            refs.prismEdgeRight.setAttribute("d", pathLine(prism.apex, prism.right));
+            refs.prismBaseEdge.setAttribute("d", pathLine(prism.left, prism.right));
+
+            refs.incidentBeamGlow.setAttribute("d", pathLine(source, entryPoint));
+            refs.incidentBeam.setAttribute("d", pathLine(source, entryPoint));
+
+            let innerGlowMarkup = "";
+            let insideMarkup = "";
+            let auraMarkup = "";
+            let outsideMarkup = "";
+            let screenSpectrumMarkup = "";
+            let screenMarkup = "";
+            let redDeviation = 0;
+            let violetDeviation = 0;
+            let redScreenPoint = null;
+            let violetScreenPoint = null;
+
+            /* Physics: each visible color gets its own refractive index so violet bends more than red. */
+            visibleBands.forEach((band) => {
+                const index = material.indices[band.key];
+                const entryRefraction = Math.asin(clamp(Math.sin(degToRad(incidenceDeg)) / index, -0.999999, 0.999999));
+                const tangentSignEntry = Math.sign(dot(incidentDir, leftFace.tangent)) || 1;
+                const insideDir = normalize(add(
+                    scale(leftFace.inward, Math.cos(entryRefraction)),
+                    scale(leftFace.tangent, tangentSignEntry * Math.sin(entryRefraction))
+                ));
+                const exitPoint = raySegmentIntersection(entryPoint, insideDir, prism.apex, prism.right);
+
+                if (!exitPoint) {
+                    return;
+                }
+
+                const outwardRight = scale(rightFace.inward, -1);
+                const exitIncidence = Math.acos(clamp(dot(insideDir, outwardRight), -0.999999, 0.999999));
+                const outSin = index * Math.sin(exitIncidence);
+                const exitRefraction = Math.asin(clamp(outSin, -0.999999, 0.999999));
+                const tangentSignExit = Math.sign(dot(insideDir, rightFace.tangent)) || 1;
+                const outDir = normalize(add(
+                    scale(outwardRight, Math.cos(exitRefraction)),
+                    scale(rightFace.tangent, tangentSignExit * Math.sin(exitRefraction))
+                ));
+                const endPoint = rayToBounds(exitPoint, outDir, scene.bounds);
+                const screenPoint = pointOnVertical(exitPoint, outDir, scene.screenX);
+                const deviation = incidenceDeg + radToDeg(exitRefraction) - apexDeg;
+
+                innerGlowMarkup += `<path d="${pathLine(entryPoint, exitPoint)}" fill="none" stroke="${band.color}" stroke-width="7" stroke-linecap="round" opacity="0.10" filter="url(#beamBlur)"></path>`;
+                insideMarkup += `<path d="${pathLine(entryPoint, exitPoint)}" fill="none" stroke="${band.color}" stroke-width="2.1" stroke-linecap="round" opacity="0.96"></path>`;
+                auraMarkup += `<path d="${pathLine(exitPoint, endPoint)}" fill="none" stroke="${band.color}" stroke-width="12" stroke-linecap="round" opacity="0.14" filter="url(#softGlow)"></path>`;
+                outsideMarkup += `<path d="${pathLine(exitPoint, endPoint)}" fill="none" stroke="${band.color}" stroke-width="3.6" stroke-linecap="round" opacity="0.96"></path>`;
+
+                if (screenPoint && screenPoint.y > 140 && screenPoint.y < 430) {
+                    screenSpectrumMarkup += `<rect x="786" y="${(screenPoint.y - 10).toFixed(2)}" width="14" height="20" rx="7" fill="${band.color}" opacity="0.94"></rect>`;
+                    screenSpectrumMarkup += `<rect x="782" y="${(screenPoint.y - 18).toFixed(2)}" width="22" height="36" rx="10" fill="${band.color}" opacity="0.16" filter="url(#beamBlur)"></rect>`;
+                    screenMarkup += `<circle cx="${screenPoint.x.toFixed(2)}" cy="${screenPoint.y.toFixed(2)}" r="7.2" fill="${band.color}" opacity="0.98"></circle>`;
+                    screenMarkup += `<circle cx="${screenPoint.x.toFixed(2)}" cy="${screenPoint.y.toFixed(2)}" r="18" fill="${band.color}" opacity="0.20"></circle>`;
+                }
+
+                if (band.key === "red" || mode === "single") {
+                    redDeviation = deviation;
+                    redScreenPoint = screenPoint;
+                }
+
+                if (band.key === "violet" || mode === "single") {
+                    violetDeviation = deviation;
+                    violetScreenPoint = screenPoint;
+                }
+            });
+
+            if (redScreenPoint && violetScreenPoint) {
+                const yMin = Math.min(redScreenPoint.y, violetScreenPoint.y) - 12;
+                const yMax = Math.max(redScreenPoint.y, violetScreenPoint.y) + 12;
+                screenSpectrumMarkup += `<rect x="787" y="${yMin.toFixed(2)}" width="12" height="${Math.max(18, yMax - yMin).toFixed(2)}" rx="6" fill="rgba(255,255,255,0.08)"></rect>`;
+            }
+
+            refs.screenPanel.setAttribute("fill", "rgba(242,247,255,0.12)");
+            refs.prismInnerGlow.innerHTML = innerGlowMarkup;
+            refs.prismInnerBeams.innerHTML = insideMarkup;
+            refs.spectrumAuras.innerHTML = auraMarkup;
+            refs.spectrumBeams.innerHTML = outsideMarkup;
+            refs.screenSpectrum.innerHTML = screenSpectrumMarkup;
+            refs.screenHits.innerHTML = screenMarkup;
+
+            refs.incidentAngleVal.textContent = formatAngle(incidenceDeg);
+            refs.apexAngleVal.textContent = formatAngle(apexDeg);
+            refs.incidenceResult.textContent = formatAngle(incidenceDeg);
+            refs.apexResult.textContent = formatAngle(apexDeg);
+            refs.redIndexVal.textContent = material.indices.red.toFixed(3);
+            refs.violetIndexVal.textContent = material.indices.violet.toFixed(3);
+            refs.redDeviationVal.textContent = formatAngle(redDeviation);
+            refs.spreadVal.textContent = formatAngle(Math.abs(violetDeviation - redDeviation));
+            refs.lambdaVal.textContent = formatLambdaRange(mode, selectedBand);
+            refs.currentIndexVal.textContent = mode === "single"
+                ? material.indices[selectedBand.key].toFixed(3)
+                : `${material.indices.red.toFixed(3)}–${material.indices.violet.toFixed(3)}`;
+            refs.band.disabled = mode !== "single";
+        }
+
+        refs.incidentAngle.addEventListener("input", updatePrismScene);
+        refs.apexAngle.addEventListener("input", updatePrismScene);
+        refs.material.addEventListener("change", updatePrismScene);
+        refs.mode.addEventListener("change", updatePrismScene);
+        refs.band.addEventListener("change", updatePrismScene);
+        refs.resetButton.addEventListener("click", () => {
+            refs.incidentAngle.value = "24";
+            refs.apexAngle.value = "40";
+            refs.material.value = "flint";
+            refs.mode.value = "white";
+            refs.band.value = "red";
+            updatePrismScene();
+        });
+
+        refs.incidentAngle.value = "24";
+        refs.apexAngle.value = "40";
+        refs.material.value = "flint";
+        refs.mode.value = "white";
+        refs.band.value = "red";
+        updatePrismScene();
+    })();
+    </script>
+</body>
+</html>
+
+
+

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -213,8 +213,22 @@ a {
     z-index: 1;
 }
 
+.lab-card strong,
+.lab-card small {
+    position: relative;
+    z-index: 1;
+}
+
 .lab-card strong {
     font-size: 1.35rem;
+}
+
+.lab-card small {
+    display: block;
+    margin-top: 8px;
+    color: rgba(16, 38, 59, 0.62);
+    font-size: 0.98rem;
+    font-weight: 700;
 }
 
 .lab-card--hooke {
@@ -228,6 +242,13 @@ a {
         radial-gradient(circle at top right, rgba(115, 220, 255, 0.20), transparent 28%),
         radial-gradient(circle at 18% 18%, rgba(255, 100, 118, 0.10), transparent 18%),
         linear-gradient(145deg, #fbfdff 0%, #edf4fb 56%, #ddeaf4 100%);
+}
+
+.lab-card--prism {
+    background:
+        radial-gradient(circle at 24% 18%, rgba(255, 214, 102, 0.18), transparent 20%),
+        radial-gradient(circle at 78% 22%, rgba(123, 211, 255, 0.16), transparent 24%),
+        linear-gradient(145deg, #fbfdff 0%, #eef5fc 56%, #dde8f3 100%);
 }
 
 @media (max-width: 720px) {
@@ -288,7 +309,7 @@ a {
 
         <section class="hero">
             <span class="eyebrow">معمل افتراضي</span>
-            <h2>بيئة تفاعلية تحاكي تجارب فيزيائية من أرض الواقع.</h2>
+            <h2>تجارب تفاعلية بمحاكاة بصرية قريبة من المشهد المختبري.</h2>
         </section>
 
         <section class="card">
@@ -305,6 +326,11 @@ a {
 
                 <a class="lab-card lab-card--refraction" href="./refraction-lab.html">
                     <strong>انكسار الضوء</strong>
+                </a>
+
+                <a class="lab-card lab-card--prism" href="./prism-lab.html">
+                    <strong>تشتت الضوء بواسطة المنشور</strong>
+                    <small>قيد التطوير</small>
                 </a>
             </div>
         </section>
