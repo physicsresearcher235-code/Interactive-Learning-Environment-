@@ -6,7 +6,7 @@
     <title>&#x642;&#x633;&#x645; &#x627;&#x644;&#x641;&#x64A;&#x632;&#x64A;&#x627;&#x621; | &#x627;&#x644;&#x648;&#x627;&#x62C;&#x647;&#x629; &#x627;&#x644;&#x631;&#x626;&#x64A;&#x633;&#x64A;&#x629;</title>
     <style>
 
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700;800&display=swap');
 
 :root {
     --bg-deep: #071824;
@@ -208,7 +208,7 @@ a {
 
 .welcome-hero {
     margin-top: 28px;
-    padding: 34px 28px 26px;
+    padding: 38px 28px 30px;
     border-radius: var(--radius-lg);
     background: var(--card);
     color: var(--ink);
@@ -220,23 +220,60 @@ a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 58px;
-    padding: 0 30px;
+    min-height: 50px;
+    padding: 0 28px;
     border-radius: 999px;
     color: #12263a;
     background: rgba(240, 179, 90, 0.18);
     font-weight: 800;
-    font-size: 1.32rem;
+    font-size: 1.18rem;
     box-shadow: 0 10px 22px rgba(16, 38, 59, 0.08);
 }
 
 .welcome-intro {
-    margin: 18px auto 0;
-    max-width: 44rem;
-    color: #36597a;
-    font-size: 1.2rem;
-    line-height: 1.95;
-    font-weight: 600;
+    margin: 24px auto 0;
+    max-width: 62rem;
+    color: #10263b;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.welcome-dedication {
+    display: grid;
+    gap: 10px;
+    width: min(100%, 44rem);
+    margin: 24px auto 0;
+    padding: 18px 34px 20px;
+    border: 1px solid rgba(240, 179, 90, 0.34);
+    border-radius: 22px;
+    color: #263f58;
+    background:
+        linear-gradient(135deg, rgba(240, 179, 90, 0.16), rgba(255, 255, 255, 0.66) 44%, rgba(42, 94, 130, 0.08)),
+        rgba(255, 255, 255, 0.34);
+    box-shadow: 0 18px 34px rgba(16, 38, 59, 0.08);
+}
+
+.welcome-dedication span {
+    justify-self: center;
+    padding: 4px 22px 6px;
+    border-radius: 999px;
+    color: #7c531d;
+    background: rgba(240, 179, 90, 0.2);
+    font-family: "Amiri", "Cairo", serif;
+    font-size: 1.08rem;
+    font-weight: 700;
+    line-height: 1.55;
+}
+
+.welcome-dedication p {
+    margin: 0;
+    color: #203a54;
+    font-family: "Amiri", "Cairo", serif;
+    font-size: 1.24rem;
+    font-weight: 700;
+    line-height: 2.05;
 }
 
 .welcome-statement {
@@ -640,6 +677,11 @@ canvas {
     .canvas-grid {
         grid-template-columns: 1fr;
     }
+
+    .welcome-intro {
+        max-width: 46rem;
+        white-space: normal;
+    }
 }
 
 @media (max-width: 720px) {
@@ -730,7 +772,11 @@ canvas {
 
         <section class="welcome-hero">
             <div class="welcome-tag">&#x645;&#x631;&#x62D;&#x628;&#x64B;&#x627; &#x628;&#x643;&#x645; &#x641;&#x64A; &#x642;&#x633;&#x645; &#x627;&#x644;&#x641;&#x64A;&#x632;&#x64A;&#x627;&#x621;</div>
-            <p class="welcome-intro">&#x628;&#x64A;&#x626;&#x629; &#x62A;&#x639;&#x644;&#x645; &#x62A;&#x641;&#x627;&#x639;&#x644;&#x64A;&#x629; &#x62A;&#x639;&#x62A;&#x645;&#x62F; &#x639;&#x644;&#x649; &#x627;&#x644;&#x62A;&#x645;&#x62B;&#x64A;&#x644; &#x627;&#x644;&#x62F;&#x64A;&#x646;&#x627;&#x645;&#x64A;&#x643;&#x64A; &#x644;&#x62A;&#x648;&#x636;&#x64A;&#x62D; &#x633;&#x644;&#x648;&#x643; &#x627;&#x644;&#x623;&#x646;&#x638;&#x645;&#x629; &#x627;&#x644;&#x641;&#x64A;&#x632;&#x64A;&#x627;&#x626;&#x64A;&#x629;.</p>
+            <p class="welcome-intro">نقدم لكم بيئة تعلم تفاعلية تعتمد على التمثيل الديناميكي لتوضيح سلوك الأنظمة الفيزيائية.</p>
+            <div class="welcome-dedication">
+                <span>هذا العمل إهداء</span>
+                <p>&#x625;&#x644;&#x649; &#x643;&#x644; &#x645;&#x646; &#x64A;&#x624;&#x645;&#x646; &#x628;&#x62C;&#x645;&#x627;&#x644; &#x627;&#x644;&#x639;&#x644;&#x645; &#x648;&#x631;&#x648;&#x62D; &#x627;&#x644;&#x627;&#x643;&#x62A;&#x634;&#x627;&#x641;&#x60C; &#x639;&#x633;&#x649; &#x623;&#x646; &#x64A;&#x62C;&#x62F; &#x647;&#x646;&#x627; &#x645;&#x627; &#x64A;&#x644;&#x647;&#x645;&#x647;...</p>
+            </div>
             <div class="credit-stack">
                 <div class="credit-line">
                     <span class="credit-label">&#x625;&#x634;&#x631;&#x627;&#x641; &#x627;&#x644;&#x623;&#x633;&#x62A;&#x627;&#x630;</span>
