@@ -169,29 +169,25 @@ a {
 
 .development-panel {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 18px;
+    right: 18px;
     z-index: 4;
-    display: grid;
-    justify-items: center;
-    gap: 8px;
-    width: min(680px, calc(100% - 40px));
-    padding: 22px 26px;
-    transform: translate(-50%, -50%);
-    border-radius: 18px;
-    text-align: center;
-    background: rgba(226, 230, 236, 0.86);
-    border: 1px solid rgba(255, 255, 255, 0.58);
-    box-shadow:
-        0 18px 42px rgba(0, 0, 0, 0.26),
-        0 0 34px rgba(197, 221, 255, 0.18);
-    backdrop-filter: blur(10px) saturate(0.92);
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 18px;
+    border-radius: 999px;
+    background: rgba(240, 179, 90, 0.94);
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(8px) saturate(0.95);
 }
 
 .development-panel strong {
-    color: #111827;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.2;
+    color: #11263b;
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1;
 }
 
 @media (max-width: 720px) {
@@ -231,8 +227,10 @@ a {
     }
 
     .development-panel {
-        width: calc(100% - 28px);
-        padding: 18px 16px;
+        top: 14px;
+        right: 14px;
+        min-height: 38px;
+        padding: 0 14px;
     }
 }
     </style>
@@ -268,7 +266,7 @@ a {
                     <img class="prism-reference-image" src="./prism-dispersion.png" alt="منشور يشتت الضوء الأبيض إلى طيف مرئي">
                     <div class="prism-visual-vignette" aria-hidden="true"></div>
                     <div class="development-panel">
-                        <strong>قيد التطوير...</strong>
+                        <strong>قيد التطوير</strong>
                     </div>
                 </div>
             </article>
