@@ -1,0 +1,13 @@
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/classical.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/dirac-delta.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/electricity.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/hooke-lab.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/prism-lab.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/quantum.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/refraction-lab.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/research-gateway.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/research-results.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/triangular.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/virtual-lab.html
+https://physicsresearcher235-code.github.io/Interactive-Learning-Environment-/waves.html
